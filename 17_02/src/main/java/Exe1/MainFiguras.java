@@ -1,5 +1,4 @@
 package Exe1;
-
 public class MainFiguras {
 
     public static void main(String[] args) {
@@ -33,6 +32,9 @@ public class MainFiguras {
         figuras[3] = r2;
         System.out.println("\n### Listagem de Figuras Armazenadas no Contentor ###");
         for (int i = 0; figuras[i] != null; i++) {
+                System.out.printf("%.2f\n",figuras[i].cArea());
+        }
+        for (int i = 0; figuras[i] != null; i++) {
             if(figuras[i] instanceof Retangulo)
                 System.out.print(figuras[i]);
         }
@@ -40,5 +42,6 @@ public class MainFiguras {
             if(figuras[i] instanceof Circulo)
                 System.out.print(figuras[i]);
         }
+
     }
 }
