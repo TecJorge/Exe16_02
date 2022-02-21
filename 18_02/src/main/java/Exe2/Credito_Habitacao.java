@@ -1,23 +1,20 @@
 package Exe2;
 
 public class Credito_Habitacao extends Credito {
-    private int spread;
+    private double spread;
     public static double Euribor = 0.1;
-    private final int spread_default = 0;
-    private final double Euribor_default = 0;
+    private final double spread_default = 0;
     public static int countCredHab=0;
 
-    Credito_Habitacao(String nome, String profissao, int montante, int mes, int spread, double Euribor) {
+    Credito_Habitacao(String nome, String profissao, int montante, int mes, double spread){
         super(nome, profissao, montante, mes);
         this.spread = spread;
-        this.Euribor = Euribor;
         countCredHab++;
     }
 
     Credito_Habitacao() {
         super();
         spread = spread_default;
-        Euribor = Euribor_default;
         countCredHab++;
     }
 
@@ -79,12 +76,12 @@ public class Credito_Habitacao extends Credito {
 
 
     public double calcularAmortizacao() {
-        return getMontante()-(getMontante()/getnMeses());
+        return (getMontante()/getnMeses());
     }
 
     @Override
     public String toString() {
-        return String.format("%s o total de juros a ser pagos é de %d",super.toString(),calcularMontanteTotalJuros());
+        return String.format("%s o total de juros a ser pagos é de %.2f Eur\n",super.toString(),calcularMontanteTotalJuros());
     }
 
     @Override
@@ -93,11 +90,11 @@ public class Credito_Habitacao extends Credito {
 
         for (int i = 0; i < getnMeses(); i++) {
             if (i == 0) {
-                juros = getMontante() * ((getEuribor() / 100) / 12 + ((spread / 100) / 12));
+                juros = getMontante() * ((Euribor/ 100) / 12 + ((spread / 100) / 12));
                 MontanteTal = getMontante() - calcularAmortizacao();
                 jurosTotal = jurosTotal + juros;
             } else {
-                juros = MontanteTal * ((getEuribor() / 100) / 12 + ((spread / 100) / 12));
+                juros = MontanteTal * ((Euribor / 100) / 12 + ((spread / 100) / 12));
                 jurosTotal = jurosTotal + juros;
                 MontanteTal = MontanteTal - calcularAmortizacao();
             }
@@ -105,6 +102,15 @@ public class Credito_Habitacao extends Credito {
     }
     @Override
     public double calcularMontanteAReceberPorCadaCredito () {
-        return calcularMontanteTotalJuros();
+        double total=0;
+        for (int i = 0; i <countCredHab ; i++) {
+            total=calcularMontanteTotalJuros();
+        }
+        return total;
+    }
+
+    @Override
+    public double calcularTotal() {
+        return getMontante()+calcularMontanteTotalJuros();
     }
 }

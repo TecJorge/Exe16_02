@@ -54,9 +54,10 @@ public abstract class Credito {
 
     @Override
     public String toString() {
-        return String.format("O CLiente %s com cargo %s pediu um credito de %d de %s a ser pago em %d Meses",nome,profissao,montante,getClass().getSimpleName(),nMeses);
+        return String.format("O Cliente %s com cargo %s pediu um %s de %d Eur a ser pago em %d Meses",nome,profissao,getClass().getSimpleName(),montante,nMeses);
     }
     public abstract double calcularMontanteAReceberPorCadaCredito();
     public abstract double calcularMontanteTotalJuros();
     public abstract double calcularAmortizacao();
+    public abstract double calcularTotal();
 }

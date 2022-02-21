@@ -2,8 +2,7 @@ package Exe2;
 
 public class Credito_Educacao extends Credito {
         private int nMesCarente;
-        private final int nMesCarente_default = 0;
-        public static double TaxaJuro = 2;
+        private double TaxaJuro ;
         private final double TaxaJuro_default = 0;
         public static int countCredEdu=0;
 
@@ -21,7 +20,15 @@ public class Credito_Educacao extends Credito {
             countCredEdu++;
         }
 
-        @Override
+    public double getTaxaJuro() {
+        return TaxaJuro;
+    }
+
+    public void setTaxaJuro(double taxaJuro) {
+        TaxaJuro = taxaJuro;
+    }
+
+    @Override
         public String getNome() {
             return super.getNome();
         }
@@ -60,37 +67,40 @@ public class Credito_Educacao extends Credito {
         }
     @Override
     public String toString() {
-        return String.format("%s o total de juros a ser pagos é de %d",super.toString(),calcularMontanteTotalJuros());
+        return String.format("%s o total de juros a ser pagos é de %.2f Eur\n",super.toString(),calcularMontanteTotalJuros());
     }
 
         public double calcularAmortizacao() {
-            return getMontante()-(getMontante()/getnMeses());
+            return (getMontante()/(getnMeses()-nMesCarente));
         }
 
         @Override
         public double calcularMontanteTotalJuros() {
-            double juros, MontanteTal=0, jurosTotal=0;
-            for (int i = 0; i <nMesCarente ; i++) {
-                juros = getMontante() * ((TaxaJuro/ 100) / 12);
+            double juros, MontanteTal, jurosTotal = 0;
+            for (int i = 0; i <= nMesCarente; i++) {
+                juros = getMontante() * ((TaxaJuro / 100) / 12);
                 jurosTotal = jurosTotal + juros;
             }
-                for (int i = 0; i < (getnMeses()-nMesCarente); i++) {
-                        juros = MontanteTal * ((TaxaJuro/ 100) / 12);
-                        jurosTotal = jurosTotal + juros;
-                        MontanteTal = MontanteTal - calcularAmortizacao();
-                    }
-                return jurosTotal; }
+            MontanteTal=getMontante();
+            for (int i = nMesCarente; i < getnMeses(); i++) {
+                    MontanteTal =MontanteTal-calcularAmortizacao();
+                    juros = MontanteTal * ((TaxaJuro / 100) / 12);
+                    jurosTotal = jurosTotal + juros;
+
+            }
+            return jurosTotal;
+        }
         @Override
         public double calcularMontanteAReceberPorCadaCredito () {
-            return calcularMontanteTotalJuros();
+            double total=0;
+            for (int i = 0; i <countCredEdu ; i++) {
+                total=calcularMontanteTotalJuros();
+            }
+            return total;
         }
-
-    public static double getTaxaJuro() {
-        return TaxaJuro;
-    }
-
-    public static void setTaxaJuro(double taxaJuro) {
-        TaxaJuro = taxaJuro;
+    @Override
+    public double calcularTotal() {
+        return getMontante()+calcularMontanteTotalJuros();
     }
 
     public static int getCountCredEdu() {

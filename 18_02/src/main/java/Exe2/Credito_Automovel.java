@@ -70,16 +70,16 @@ public class Credito_Automovel extends Credito {
 
     private double cTaxaAnualAuto() {
         if (getnMeses() <= 24)
-            return juro - 1;
+            return 1-juro;
         else
             return juro;
     }
     @Override
     public String toString() {
-        return String.format("%s o total de juros a ser pagos é de %d",super.toString(),calcularMontanteTotalJuros());
+        return String.format("%s o total de juros a ser pagos é de %.2f Eur\n",super.toString(),calcularMontanteTotalJuros());
     }
     public double calcularAmortizacao() {
-        return getMontante()-(getMontante()/getnMeses());
+        return (getMontante()/getnMeses());
     }
 
     @Override
@@ -97,12 +97,20 @@ public class Credito_Automovel extends Credito {
                 MontanteTal = MontanteTal - calcularAmortizacao();
             }
         }
-        return jurosTotal;
+        return Math.abs(jurosTotal);
     }
 
     @Override
     public double calcularMontanteAReceberPorCadaCredito () {
-        return calcularMontanteTotalJuros();
+        double total=0;
+        for (int i = 0; i <totalCAuto ; i++) {
+            total=calcularMontanteTotalJuros();
+        }
+        return total;
             }
+    @Override
+    public double calcularTotal() {
+        return getMontante()+calcularMontanteTotalJuros();
+    }
 }
 
