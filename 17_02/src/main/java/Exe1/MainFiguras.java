@@ -1,4 +1,7 @@
 package Exe1;
+
+import java.util.ArrayList;
+
 public class MainFiguras {
 
     public static void main(String[] args) {
@@ -24,23 +27,23 @@ public class MainFiguras {
         System.out.println(obj);
         
         // Armazenamento de Objetos num Contentor do Tipo Array
-        Figura[] figuras = new Figura[10];
+        ArrayList<Figura>figuras = new ArrayList<>();
 
-        figuras[0] = c1;
-        figuras[1] = c2;
-        figuras[2] = r1;
-        figuras[3] = r2;
+        figuras.add(c1);
+        figuras.add(c2);
+        figuras.add(r1);
+        figuras.add(r2);
         System.out.println("\n### Listagem de Figuras Armazenadas no Contentor ###");
-        for (int i = 0; figuras[i] != null; i++) {
-                System.out.printf("%.2f\n",figuras[i].cArea());
+        for (Figura fig: figuras) {
+                System.out.printf("%.2f\n",fig.cArea());
         }
-        for (int i = 0; figuras[i] != null; i++) {
-            if(figuras[i] instanceof Retangulo)
-                System.out.print(figuras[i]);
+        for (Figura fig: figuras) {
+            if(fig instanceof Retangulo)
+                System.out.print(fig);
         }
-        for (int i = 0; figuras[i] != null; i++) {
-            if(figuras[i] instanceof Circulo)
-                System.out.print(figuras[i]);
+        for (Figura fig: figuras) {
+            if(fig instanceof Circulo)
+                System.out.print(fig);
         }
 
     }
