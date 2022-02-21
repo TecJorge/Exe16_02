@@ -1,39 +1,41 @@
 package Exe1;
 
+import java.util.ArrayList;
+
 public class MainVencimentos {
     public static void main(String[] args) {
         TrabalhadorPeca trp1=new TrabalhadorPeca("Jorge Silva",53,62);
         TrabalhadorComissao trc1=new TrabalhadorComissao("Susana Ferreira",650, 2731.50f,4.25f);
         TrabalhadorHora trH1=new TrabalhadorHora("Carlos Miguel",168,4.5f);
-        Trabalhador [] arr= new Trabalhador[10];
-        arr[0]=trp1;
-        arr[1]=trc1;
-        arr[2]=trH1;
-        for(int i = 0;arr[i]!=null;i++){
-            System.out.println(arr[i].toString());
+        ArrayList<Trabalhador> arr= new ArrayList<Trabalhador>();
+        arr.add(trp1);
+        arr.add(trc1);
+        arr.add(trH1);
+        for(Trabalhador trabalhador:arr){
+            System.out.println(trabalhador.toString());
         }
-        for(int i = 0;arr[i]!=null;i++){
-            if(arr[i] instanceof TrabalhadorHora) {
-                System.out.println(arr[i].toString());
+        for(Trabalhador trabalhador:arr){
+            if(trabalhador instanceof TrabalhadorHora) {
+                System.out.println(trabalhador.toString());
             }
         }
-        for(int i = 0;arr[i]!=null;i++){
-            System.out.printf("%s %nVencimento do Mes : %.2f€%n ",arr[i],arr[i].calcularVencimento());
+        for(Trabalhador trabalhador:arr){
+            System.out.printf("%s %nVencimento do Mes : %.2f€%n ",trabalhador,trabalhador.calcularVencimento());
         }
-        Object [] arr1= new Object[10];
-        arr1[0]=trp1;
-        arr1[1]=trc1;
-        arr1[2]=trH1;
-        for(int i = 0;arr1[i]!=null;i++){
-            System.out.println(arr[i].toString());
+       ArrayList<Object> arr1= new ArrayList<Object>();
+        arr1.add(trp1);
+        arr1.add(trc1);
+        arr1.add(trH1);
+        for(Trabalhador trabalhador:arr){
+            System.out.println(trabalhador.toString());
         }
-        for(int i = 0;arr1[i]!=null;i++){
-            if(arr1[i] instanceof TrabalhadorHora) {
-                System.out.println(arr[i].toString());
+        for(Trabalhador trabalhador:arr){
+            if(trabalhador instanceof TrabalhadorHora) {
+                System.out.println(trabalhador.toString());
             }
         }
-        for(int i = 0;arr1[i]!=null;i++){
-            System.out.printf("%s %nVencimento do Mes : %.2f€%n ",arr1[i], ((Trabalhador) arr1[i]).calcularVencimento());
+        for(Trabalhador trabalhador:arr){
+            System.out.printf("%s %nVencimento do Mes : %.2f€%n ",trabalhador, ((Trabalhador) trabalhador).calcularVencimento());
         }
     }
 }
