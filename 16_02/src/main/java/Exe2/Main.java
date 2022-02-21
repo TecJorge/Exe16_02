@@ -1,7 +1,5 @@
 package Exe2;
-
 import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
         ArrayList <Contribuinte> arr = new ArrayList<>();
@@ -32,8 +30,8 @@ public class Main {
         for (Contribuinte contribuinte:arr) {
             if (contribuinte instanceof Desempregado)
                 System.out.printf("%s e tem de pagar %.2f EUR de impostos\n", contribuinte,contribuinte.Impostos());
-
-
         }
+
+
     }
 }

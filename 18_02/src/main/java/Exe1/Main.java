@@ -44,5 +44,25 @@ public class Main {
                 System.out.print(contador);
             }
         }
+        ArrayList<String> nomes = new ArrayList<>();
+        System.out.println("\nClientes");
+        nomes.set(0, String.valueOf(count.get(0).getNome()));
+        for (Contador contador:count) {
+            if (contador != null) {
+                boolean duplicado = false;
+                int j=0;
+                while (j<count.size() && !duplicado) {
+                    if(contador.getNome().equalsIgnoreCase(nomes.get(j)))
+                        duplicado=true;
+                    j++;
+                }
+                if(!duplicado){
+                    nomes.add(contador.getNome());
+                }
+            }
+        }
+        for (String names:nomes) {
+            System.out.println(names);
+        }
     }
 }
