@@ -1,6 +1,7 @@
 package Exe1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -64,5 +65,6 @@ public class Main {
         for (String names:nomes) {
             System.out.println(names);
         }
+        Arrays.sort(contador);
     }
 }
