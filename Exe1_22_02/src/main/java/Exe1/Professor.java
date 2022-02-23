@@ -49,10 +49,14 @@ public class Professor extends Pessoa implements PagamentoMensal{
     public String toString() {
        return String.format("%s com Categoria %s\n ",super.toString(),Cat);
     }
+    public double calcMajoracao() {
+
+        return ((this.getCat().equalsIgnoreCase("Assistente")?((TaxASsist==0)?TaxASsist:(SalarioBase*TaxASsist)/100):(this.getCat().equalsIgnoreCase("Coordenador")?(SalarioBase*TaxCorden)/100:(this.getCat().equalsIgnoreCase("Supervisor")?(SalarioBase*TaxSuper)/100:0))));
+    }
 
     @Override
     public double calcPagMensal() {
-        return (SalarioBase+(this.getCat().equalsIgnoreCase("Assistente")?((SalarioBase==0)?SalarioBase:(SalarioBase*TaxASsist)/100):(this.getCat().equalsIgnoreCase("Coordenador")?(SalarioBase*TaxCorden)/100:(this.getCat().equalsIgnoreCase("Supervisor")?(SalarioBase*TaxSuper)/100:0))));
+        return SalarioBase+calcMajoracao();
     }
 
     public static void setSalarioBase(int salarioBase) {
@@ -69,5 +73,17 @@ public class Professor extends Pessoa implements PagamentoMensal{
 
     public static void setTaxSuper(int taxSuper) {
         TaxSuper = taxSuper;
+    }
+
+    public static int getTaxASsist() {
+        return TaxASsist;
+    }
+
+    public static int getTaxCorden() {
+        return TaxCorden;
+    }
+
+    public static int getTaxSuper() {
+        return TaxSuper;
     }
 }

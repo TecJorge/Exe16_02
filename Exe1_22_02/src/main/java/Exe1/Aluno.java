@@ -1,8 +1,8 @@
 package Exe1;
 
-public class Aluno extends Pessoa implements PagamentoMensal{
+public class Aluno extends Pessoa {
     int nMecano;
-    int nMecano_Default=9999999;
+    static final int  nMecano_Default=9999999;
     Aluno(String nome,int id,int nMecano){
         super(nome,id);
         this.nMecano=nMecano;
@@ -45,8 +45,5 @@ public class Aluno extends Pessoa implements PagamentoMensal{
     return String.format("%s com o numero mecanografico %d \n",super.toString(),nMecano);
     }
 
-    @Override
-    public double calcPagMensal() {
-        return 0;
-    }
+
 }

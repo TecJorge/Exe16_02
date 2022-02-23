@@ -3,8 +3,8 @@ package Exe1;
 abstract class Pessoa {
     String nome;
     int iDCivil;
-    private  static String Nome_Default="SemNome";
-    private static int iD_Default=9999999;
+    private static final String Nome_Default="SemNome";
+    private static final int iD_Default=9999999;
     Pessoa(String nome , int iDCivil){
         this.nome=nome;
         this.iDCivil=iDCivil;

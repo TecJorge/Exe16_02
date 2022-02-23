@@ -2,7 +2,7 @@ package Exe1;
 
 public class AlunoBolsa extends Aluno implements PagamentoMensal {
     double bolsa;
-    double bolsa_Default=500;
+    static final double bolsa_Default=500;
     AlunoBolsa(String nome , int id , int num , int bolsa){
         super(nome,id,num);
         this.bolsa=bolsa;

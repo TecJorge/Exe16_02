@@ -1,13 +1,15 @@
 package Exe1;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProfessorTest {
+class AlunoBolsaTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void calcPagMensal() {
-        Professor instance = new Professor("Diogo",90,"coordenador");
-        double expResult=2250;
+        AlunoBolsa instance = new AlunoBolsa("Diogo",90,109999,650);
+        double expResult=650;
         double Result=instance.calcPagMensal();
         assertEquals(expResult,Result,0.001);
     }

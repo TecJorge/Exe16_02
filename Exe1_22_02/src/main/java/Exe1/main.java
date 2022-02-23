@@ -14,28 +14,25 @@ public class main {
         escola.add(new AlunoBolsa("Joao",18822329,1998232455,600));
         escola.add(new AlunoBolsa("Jorge",10042329,1998232455,3600));
         for (Pessoa x:escola) {
-            if (x instanceof Professor)
-            System.out.print(x);
+            if (x.getClass().getSimpleName().equalsIgnoreCase("Professor"))
+            System.out.printf("O %s %s é %s\n",x.getClass().getSimpleName(),x.getNome(), ((Professor) x).getCat());
         }
         for (Pessoa x:escola) {
-            if (x instanceof Aluno && !(x instanceof AlunoBolsa))
-                System.out.printf("Numero Mecanografico do Aluno : %d \n",((Aluno) x).getnMecano());
+            if (x.getClass().getSimpleName().equalsIgnoreCase("Aluno"))
+                System.out.printf("Numero Mecanografico do Aluno %s é : %d \n",x.getNome(),((Aluno) x).getnMecano());
         }
         for (Pessoa x:escola) {
+                System.out.printf("%s é %s\n",x.getNome(),x.getClass().getSimpleName());
+        }
+        for (Pessoa x:escola) {
+            if (x.getClass().getSimpleName().equalsIgnoreCase("Professor")) {
+                System.out.printf("%s recebe ao fim do mes %.2f Eur\n", x.getNome(), ((Professor) x).calcPagMensal());
+                DespesaEscola += ((PagamentoMensal) x).calcPagMensal();}
+        }
+        for (Pessoa x:escola) {
+            if (x.getClass().getSimpleName().equalsIgnoreCase("AlunoBolsa")) {
                 System.out.print(x);
-        }
-        for (Pessoa x:escola) {
-            if (x instanceof Professor)
-                System.out.printf("%s recebe ao fim do mes %.2f Eur\n",x,((Professor) x).calcPagMensal());
-        }
-        for (Pessoa x:escola) {
-            if (x instanceof AlunoBolsa)
-                System.out.print(x);
-        }
-        for (Pessoa x:escola) {
-            if(((PagamentoMensal) x).calcPagMensal()!=0)
-                System.out.printf("%s\n%s\n%.2f Eur\n",x.getClass().getSimpleName(),x.getNome(),((PagamentoMensal) x).calcPagMensal());
-                DespesaEscola+=((PagamentoMensal) x).calcPagMensal();
+                DespesaEscola += ((PagamentoMensal) x).calcPagMensal();}
         }
         System.out.printf("A Escola tera um custo no mes currente de %.2f Eur",DespesaEscola);
     }
