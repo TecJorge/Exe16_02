@@ -42,7 +42,7 @@ public class Aluno extends Pessoa {
 
     @Override
     public String toString() {
-    return String.format("%s com o numero mecanografico %d \n",super.toString(),nMecano);
+    return String.format("%s com o numero mecanografico %d\n",super.toString(),nMecano);
     }
 
 

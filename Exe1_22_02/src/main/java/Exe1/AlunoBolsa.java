@@ -52,7 +52,7 @@ public class AlunoBolsa extends Aluno implements PagamentoMensal {
 
     @Override
     public String toString() {
-        return  String.format("%s tem uma bolsa de %.2f Eur \n",super.toString(),bolsa);
+        return  String.format("%s tem uma bolsa de %.2f Eur \n",super.toString().replace("\n",","),bolsa);
     }
 
     @Override
