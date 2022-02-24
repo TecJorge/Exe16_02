@@ -25,7 +25,7 @@ public class Desempregado extends Contribuinte {
     }
     @Override
     public String toString() {
-        return super.toString();
+        return String.format("%s\n",super.toString());
     }
     @Override
     public double Impostos() {
@@ -38,4 +38,6 @@ public class Desempregado extends Contribuinte {
     public static void setPercentOR(double percentOR) {
         PercentOR = percentOR;
     }
+
+
 }

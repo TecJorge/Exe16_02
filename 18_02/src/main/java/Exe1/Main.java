@@ -1,5 +1,8 @@
 package Exe1;
 
+import Exe2.Contribuinte;
+import Exe2.Desempregado;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -66,5 +69,3 @@ public class Main {
             System.out.println(names);
         }
         Arrays.sort(contador);
-    }
-}

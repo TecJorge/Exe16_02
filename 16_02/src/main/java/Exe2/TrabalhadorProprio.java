@@ -53,6 +53,7 @@ public class TrabalhadorProprio extends ComRendimentos {
             return getRendimento()*(getPercentRT()+3*(Math.pow(10,-2)))+this.getOutroRend()*(getPercentOR()*(Math.pow(10,-2)));
     }
 
+
     public static double PercentRT = 2;
     public static double PercentOR = 2;
 

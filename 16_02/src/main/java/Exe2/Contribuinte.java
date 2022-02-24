@@ -1,5 +1,7 @@
 package Exe2;
 
+import java.util.Objects;
+
 public abstract class Contribuinte {
     private String nome,morada,tipo;
     private double outroRend;
@@ -39,4 +41,11 @@ public abstract class Contribuinte {
     }
     public abstract double Impostos();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contribuinte that = (Contribuinte) o;
+        return Double.compare(that.outroRend, outroRend) == 0 && Objects.equals(nome, that.nome) && Objects.equals(morada, that.morada) && Objects.equals(tipo, that.tipo);
+    }
 }

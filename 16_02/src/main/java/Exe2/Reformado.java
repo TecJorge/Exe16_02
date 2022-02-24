@@ -47,6 +47,7 @@ Reformado(){
     public final double Impostos() {
         return getRendimento()*(getPercentRT()*(Math.pow(10,-2)))+this.getOutroRend()*(getPercentOR()*(Math.pow(10,-2)));
     }
+
     public static double PercentRT=1;
     public static double PercentOR=3;
 

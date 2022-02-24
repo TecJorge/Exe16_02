@@ -1,5 +1,7 @@
 package Exe2;
 
+import java.util.Objects;
+
 public abstract class ComRendimentos extends Contribuinte{
     private double Rendimento;
     private final double RENDIMENTO_DEFAULT=0;
@@ -35,6 +37,20 @@ public abstract class ComRendimentos extends Contribuinte{
 
     public static double getLimsup() {
         return limsup;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        ComRendimentos that = (ComRendimentos) o;
+        return Double.compare(that.Rendimento, Rendimento) == 0 && Double.compare(that.RENDIMENTO_DEFAULT, RENDIMENTO_DEFAULT) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Rendimento, RENDIMENTO_DEFAULT);
     }
 
     public static void setLiminf(double liminf) {
