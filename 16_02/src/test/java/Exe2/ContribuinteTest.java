@@ -19,23 +19,23 @@ class ContribuinteTest {
         ref1=new Reformado("Carlos Cruz", "Rua da Direita", 300, 120);
     }
     @Test
-   void testEqualsIgual(TrabalhadorOutrem rendimentos) {
+   void testEqualsIgual() {
         TrabalhadorOutrem est =trp1;
         assertTrue(trp1 == est);
     }
     @Test
-    void testEqualsNotIgual(ComRendimentos rendimentos) {
-        assertFalse(trp1 != new TrabalhadorOutrem("Gracinda da Meo", "Rua de Tras", 500000, 120));
+    void testEqualsNotIgual() {
+        assertFalse(trp1.equals(new TrabalhadorOutrem("Gracinda da Meo", "Rua de Tras", 500000, 120)));
 
     }
     @Test
-    void testEqualsNull(ComRendimentos rendimentos) {
-        assert(trp1 ==null|| trp1.getClass() != (new TrabalhadorOutrem("Gracinda da Meo", "Rua de Tras", 500000, 120).getClass()));
+    void testEqualsNull() {
+        assertFalse(trp1 ==null|| trp1.getClass() != (new TrabalhadorOutrem("Gracinda da Meo", "Rua de Tras", 500000, 120).getClass()));
 
     }
     @Test
-    void testEquals4(ComRendimentos rendimentos) {
-        assert (Double.compare(trp1.getRendimento(), trc1.getRendimento()) == 0 && Double.compare(trp1.getOutroRend(), trc1.getOutroRend()) == 0);
+    void testEquals4() {
+        assertFalse(Double.compare(trp1.getRendimento(), trc1.getRendimento()) == 0 && Double.compare(trp1.getOutroRend(), trc1.getOutroRend()) == 0);
 
     }
 }
