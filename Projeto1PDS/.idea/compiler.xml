@@ -6,13 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Utilitarios" />
-        <module name="Empregado" />
+        <module name="Projeto1PDS" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Empregado" target="8" />
-      <module name="Utilitarios" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
