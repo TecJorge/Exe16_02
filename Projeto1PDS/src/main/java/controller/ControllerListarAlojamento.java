@@ -1,14 +1,13 @@
 package controller;
 
 import domain.Organizacao;
-import domain.TipoAtividade;
 
 import java.util.List;
 
 public class ControllerListarAlojamento {
     private List tipoAlojamentolist;
     private Organizacao organizacao;
-    ControllerListarAlojamento(Organizacao organizacao){
+    public ControllerListarAlojamento(Organizacao organizacao){
         this.tipoAlojamentolist=organizacao.getAlojamentoList();
     }
     public void ListarAlojamentos(){

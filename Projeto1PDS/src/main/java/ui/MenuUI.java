@@ -18,6 +18,8 @@ public class MenuUI {
             System.out.println("4- Listar Tipo de Alojamento");
             System.out.println("5- Listar Locais");
             System.out.println("6- Listar Tipo de Atividade");
+            System.out.println("7- Especificar Alojamento");
+            System.out.println("8- Especificar Atividade");
 
             System.out.println("0- Sair");
             Opcao= utilitarios.readLineFromConsole("Introduza a opção\n");
@@ -31,6 +33,26 @@ public class MenuUI {
             }
             if (Opcao.equalsIgnoreCase("3")){
                 UIAtividade ui=new UIAtividade(organizacao);
+                ui.run();
+            }
+            if (Opcao.equalsIgnoreCase("4")){
+                UIListarAlojamento ui=new UIListarAlojamento(organizacao);
+                ui.run();
+            }
+            if (Opcao.equalsIgnoreCase("5")){
+                UIListarAtividade ui=new UIListarAtividade(organizacao);
+                ui.run();
+            }
+            if (Opcao.equalsIgnoreCase("6")){
+                UIListarLocal ui=new UIListarLocal(organizacao);
+                ui.run();
+            }
+            if (Opcao.equalsIgnoreCase("7")){
+                UIAlojamento ui=new UIAlojamento(organizacao);
+                ui.run();
+            }
+            if (Opcao.equalsIgnoreCase("8")){
+                UIOAtividade ui=new UIOAtividade(organizacao);
                 ui.run();
             }
 
