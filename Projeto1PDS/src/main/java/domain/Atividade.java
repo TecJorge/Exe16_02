@@ -4,10 +4,10 @@ public class Atividade {
     private String denominação;
     private TipoAtividade tipoAtividade;
     private Local localc,localp;
-    private Data data;
+    private Date data;
     private double preco;
     private Tempo tempoInicio,tempoFim;
-    public Atividade(String denominação, TipoAtividade tipoAtividade, Local localc, Local localp, Data data, double preco,Tempo tempoInicio,Tempo tempoFim) {
+    public Atividade(String denominação, TipoAtividade tipoAtividade, Local localc, Local localp, Date data, double preco, Tempo tempoInicio, Tempo tempoFim) {
         this.denominação=denominação;
         this.tipoAtividade=tipoAtividade;
         this.localc=localc;
@@ -18,8 +18,16 @@ public class Atividade {
         this.tempoFim=tempoFim;
     }
 
+    public Date getData() {
+        return data;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
     @Override
     public String toString() {
-        return String.format("%s\n%s\nLocal de Chegada: %s\nLocal de Partida: %s\nDia da Semana : %s\nPreço :%.2f EUR\nHora de Inicio:%s \nHora de Terminio :%s",denominação,tipoAtividade,localc,localp,data.DiaSemana(),preco,tempoInicio,tempoFim);
+        return String.format("%s\n%s\nLocal de Chegada: %s\nLocal de Partida: %s\nDia da Semana : %s\nPreço :%.2f EUR\nHora de Inicio:%s \nHora de Terminio :%s",denominação,tipoAtividade,localc,localp,data.sDiaSemana(),preco,tempoInicio,tempoFim);
     }
 }

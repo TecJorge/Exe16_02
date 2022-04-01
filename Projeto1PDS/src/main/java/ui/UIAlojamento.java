@@ -2,12 +2,14 @@ package ui;
 
 import controller.ControllerAlojamento;
 import domain.*;
+import domain.Date;
 import utils.utilitarios;
 
-import java.util.Arrays;
-import java.util.Locale;
+import java.lang.reflect.Array;
+import java.time.DayOfWeek;
+import java.time.format.TextStyle;
+import java.util.*;
 
-import static domain.Data.DiaDaSemana.designacaoDiaDaSemana;
 
 public class UIAlojamento {
     private Organizacao organizacao;
@@ -41,14 +43,24 @@ public class UIAlojamento {
        int qntdMax=Integer.valueOf(utilitarios.readLineFromConsole("Introduza o numero Maximo de Pessoas "));
        int qntdMin=Integer.valueOf(utilitarios.readLineFromConsole("Introduza o numero Minimo de Pessoas "));
         System.out.println("Escolha um dia da semana dos Seguintes");
-       utilitarios.apresentaLista(Arrays.asList(Data.DiaDaSemana.values()),"Dias da Semana");
+        List dias=Traduz(DayOfWeek.values());
+       utilitarios.apresentaLista(dias,"Dias da Semana");
         String dia=utilitarios.readLineFromConsole("Escolha um dia da semana dos Seguintes").toUpperCase(Locale.ROOT);
-       Data data=new Data();
-       data.setDiaDaSemana((designacaoDiaDaSemana(Integer.valueOf(dia))));
+      Date data=new Date();
+       data.setDiaSemana(DayOfWeek.of(Integer.valueOf(dia)));
        double preco=Double.valueOf(utilitarios.readLineFromConsole("Introduza um preço"));
         controller.CriarAlojamento(denominação,tipoAlojamento,local,qntdMax,qntdMin,data,preco);
+        apresentaDados();
+
     }
     public void apresentaDados(){
         System.out.printf("Alojamento \n%s",controller.getAlojamento());
+    }
+    public static List Traduz(DayOfWeek[] array){
+        List<String>dayOfWeeks=new ArrayList<>();
+        for (DayOfWeek x:array) {
+                dayOfWeeks.add((x.getDisplayName(TextStyle.FULL_STANDALONE,new Locale(System.getProperty("user.country.format")))));
+        }
+        return dayOfWeeks;
     }
 }

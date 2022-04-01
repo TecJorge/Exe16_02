@@ -4,10 +4,13 @@ import controller.ControllerOAtividade;
 import domain.*;
 import utils.utilitarios;
 
-import java.util.Arrays;
+import java.time.DayOfWeek;
+import java.time.format.TextStyle;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
-import static domain.Data.DiaDaSemana.designacaoDiaDaSemana;
+
 
 public class UIOAtividade {
     private Organizacao organizacao;
@@ -46,16 +49,25 @@ public class UIOAtividade {
          hora=Integer.valueOf(utilitarios.readLineFromConsole("Introduza a Hora de Fim"));
          minuto=Integer.valueOf(utilitarios.readLineFromConsole("Introduza os minutos do Fim da Atividade"));
         Tempo tempof=new Tempo(hora,minuto);
-        utilitarios.apresentaLista(Arrays.asList(Data.DiaDaSemana.values()),"Dias da Semana");
+        System.out.println("Escolha um dia da semana dos Seguintes");
+        List dias=Traduz(DayOfWeek.values());
+        utilitarios.apresentaLista(dias,"Dias da Semana");
         String dia=utilitarios.readLineFromConsole("Escolha um dia da semana dos Seguintes").toUpperCase(Locale.ROOT);
-        Data data=new Data();
-        data.setDiaDaSemana((designacaoDiaDaSemana(Integer.valueOf(dia))));
+        Date data=new Date();
+        data.setDiaSemana(DayOfWeek.of(Integer.valueOf(dia)));
         double preco=Double.valueOf(utilitarios.readLineFromConsole("Introduza um preço"));
 
         controller.CriarAtividade(denominação,tipoAtividade,localc,localp,data,preco,tempoi,tempof);
     }
     public void apresentaDados(){
         System.out.printf("Atividade \n%s",controller.getAtividade());
+    }
+    public static List Traduz(DayOfWeek[] array){
+        List<String>dayOfWeeks=new ArrayList<>();
+        for (DayOfWeek x:array) {
+            dayOfWeeks.add((x.getDisplayName(TextStyle.FULL_STANDALONE,new Locale(System.getProperty("user.country.format")))));
+        }
+        return dayOfWeeks;
     }
 }
 
