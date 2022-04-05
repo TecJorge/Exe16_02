@@ -1,0 +1,12 @@
+CentroComercial:Dolce Vita
+Morada:Seila
+LojaAncora:IdLoja=2;NomeLoja=Nike;AreaLoja=190,00;ReceitasAnoAnterior=160000,00;CustoSegurança=5000,00
+LojaAncora:IdLoja=1;NomeLoja=Bdidas;AreaLoja=90,00;ReceitasAnoAnterior=10000,00;CustoSegurança=2000,00
+LojaAncora:IdLoja=3;NomeLoja=Rebook;AreaLoja=20,00;ReceitasAnoAnterior=3500,00;CustoSegurança=450,00
+LojaComumQuiosque:IDLoja=9;NomeLoja=Jogo;AreaLoja=15,00;ReceitasAnoAnterior=3500,00;NFuncionarios=1;Renda=250,00
+LojaComumQuiosque:IDLoja=9;NomeLoja=Virgil'sKiosk;AreaLoja=15,00;ReceitasAnoAnterior=9500,00;NFuncionarios=1;Renda=250,00
+LojaComumQuiosque:IDLoja=11;NomeLoja=A bola;AreaLoja=10,00;ReceitasAnoAnterior=2500,00;NFuncionarios=2;Renda=250,00
+LojaComumRestauracao:IDLoja=5;NomeLoja=BBQ;AreaLoja=70,00;ReceitasAnoAnterior=3000,00;NFuncionarios=3;CustoManutenção=15,00;NMesas=3
+LojaComumRestauracao:IDLoja=5;NomeLoja=LadoB;AreaLoja=70,00;ReceitasAnoAnterior=15000,00;NFuncionarios=7;CustoManutenção=7,00;NMesas=20
+LojaComumRestauracao:IDLoja=5;NomeLoja=MacLeopardo;AreaLoja=70,00;ReceitasAnoAnterior=8000,00;NFuncionarios=10;CustoManutenção=12,00;NMesas=8
+LojaComumRestauracao:IDLoja=5;NomeLoja=TacoBell;AreaLoja=70,00;ReceitasAnoAnterior=9000,00;NFuncionarios=18;CustoManutenção=10,00;NMesas=10

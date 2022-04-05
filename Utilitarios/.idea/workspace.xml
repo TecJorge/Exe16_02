@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b6af4c5e-56ab-4f29-a463-29afdd529fe7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Empregado/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Empregado/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Empregado/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Empregado/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Empregado/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Empregado/src/main/java/Empregado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ponto/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ponto/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ponto/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ponto/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ponto/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ponto/src/main/java/Ponto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ponto/src/main/java/SegmentoDeReta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ponto/src/main/java/main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ponto/src/test/java/PontoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ponto/src/test/java/SegmentoDeRetaTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Projeto/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/upskill/utils/Data.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/upskill/utils/Tempo.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="26hKQNigwSX92Lm49MDfeHIphag" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b6af4c5e-56ab-4f29-a463-29afdd529fe7" name="Changes" comment="" />
+      <created>1647870371057</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1647870371057</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
