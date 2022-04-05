@@ -4,11 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b78ed32-9ac7-4127-9cdd-17ecdbf4e7f1" name="Changes" comment="Exercicio Data GUI" />
+    <list default="true" id="4b78ed32-9ac7-4127-9cdd-17ecdbf4e7f1" name="Changes" comment="Exercicio Data GUI update">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/upskill/datagui/controller/ApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/upskill/datagui/SceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/upskill/datagui/SceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/upskill/datagui/SceneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/upskill/datagui/SceneController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -36,6 +48,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -76,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649084483416</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Exercicio Data GUI update">
+      <created>1649143729332</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649143729332</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -93,6 +113,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Exercicio Data GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exercicio Data GUI" />
+    <MESSAGE value="Exercicio Data GUI update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exercicio Data GUI update" />
   </component>
 </project>

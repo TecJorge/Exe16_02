@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import org.upskill.datagui.controller.ApplicationController;
 import org.upskill.datagui.model.Data;
 import org.upskill.datagui.model.DiaInvalidoException;
 import org.upskill.datagui.model.MesInvalidoException;
@@ -26,6 +27,8 @@ import java.util.ResourceBundle;
  */
 public class SceneController implements Initializable {
 
+    private ApplicationController controller;
+
     @FXML
     private Label txtResposta;
     @FXML
@@ -38,31 +41,19 @@ public class SceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       controller=new ApplicationController();
     }
 
     @FXML
     private void btnDiaSemanaAction(ActionEvent actionEvent) {
         try {
-            String[] temp;
-            temp = txtFieldData.getText().split("/");
-            Data data = new Data(Integer.valueOf(temp[0]), Integer.valueOf(temp[1]), Integer.valueOf(temp[2]));
-            txtFieldDia.setText(data.diaDaSemana());
+            txtFieldDia.setText(controller.diaSemana(txtFieldData.getText()));
         } catch (DiaInvalidoException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro");
-            alert.setHeaderText(e.getMessage());
-            alert.show();
+            criarAlerta(e);
         } catch (MesInvalidoException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro");
-            alert.setHeaderText(e.getMessage());
-            alert.show();
+            criarAlerta(e);
         } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro");
-            alert.setHeaderText("A Data deve de ser separada por /");
-            alert.show();
+            criarAlerta(e);
         }
     }
 
@@ -78,25 +69,13 @@ public class SceneController implements Initializable {
     @FXML
     private void btnDataExtensoAction(ActionEvent actionEvent) {
         try {
-            String[] temp;
-            temp = txtFieldData.getText().split("/");
-            Data data = new Data(Integer.valueOf(temp[0]), Integer.valueOf(temp[1]), Integer.valueOf(temp[2]));
-            txtResposta.setText(data.toString());
+            txtResposta.setText(controller.dataExtenso(txtFieldData.getText()));
         } catch (DiaInvalidoException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro");
-            alert.setHeaderText(e.getMessage());
-            alert.show();
+            criarAlerta(e);
         } catch (MesInvalidoException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro");
-            alert.setHeaderText(e.getMessage());
-            alert.show();
+            criarAlerta(e);
         } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro");
-            alert.setHeaderText("A Data deve de ser separada por /");
-            alert.show();
+            criarAlerta(e);
         }
     }
 
@@ -108,5 +87,11 @@ public class SceneController implements Initializable {
             btnDiaSemanaAction(new ActionEvent());
         }
 
+    }
+    private void criarAlerta(Exception e){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erro");
+        alert.setHeaderText(e.getMessage());
+        alert.show();
     }
 }
