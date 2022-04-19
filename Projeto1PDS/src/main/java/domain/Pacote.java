@@ -19,6 +19,14 @@ public class Pacote {
         return descricao;
     }
 
+    public List<Alojamento> getListaAlojamento() {
+        return listaAlojamento;
+    }
+
+    public List<Atividade> getListaAtividades() {
+        return listaAtividades;
+    }
+
     public double getPreco() {
         return preco;
     }
@@ -36,6 +44,12 @@ public class Pacote {
         this.preco+=atividade.getPreco();
         return this.listaAtividades.add(atividade);
     }
+    }
+    public boolean removerAlojamento(Alojamento alojamento){
+        return this.listaAlojamento.remove(alojamento);
+    }
+    public boolean removerAtividade(Atividade atividade){
+        return this.listaAtividades.remove(atividade);
     }
 
     @Override

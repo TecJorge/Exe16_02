@@ -38,11 +38,17 @@ public class Organizacao {
     }
 
     public TipoAlojamento novoAlojamento(String desc){return new TipoAlojamento(desc);}
+
     public Pacote novoPacote(String desc){return new Pacote(desc);}
+
     public TipoAtividade novaAtividade(String desc){return new TipoAtividade(desc);}
+
     public Local novoLocal(String cid , String pais){return new Local(cid,pais);}
+
     public Alojamento novoOAlojamento(String denominação,TipoAlojamento tipoAlojamento,Local local,int qntdMax,int qntdMin,Date data, double preco){return new Alojamento(denominação,tipoAlojamento,local,qntdMax,qntdMin,data,preco);}
+
     public Atividade novoOAtividade(String denominação,TipoAtividade tipoAtividade,Local localc,Local localp,Date data, double preco,Tempo tempoi,Tempo tempof){return new Atividade(denominação,tipoAtividade,localc,localp,data,preco,tempoi,tempof);}
+
      public boolean validaAlujamento(TipoAlojamento obj1) {
 
         return true;

@@ -18,8 +18,9 @@ public class MenuUI {
             System.out.println("4- Listar Tipo de Alojamento");
             System.out.println("5- Listar Locais");
             System.out.println("6- Listar Tipo de Atividade");
-            System.out.println("7- Especificar Alojamento");
-            System.out.println("8- Especificar Atividade");
+            System.out.println("7- Criar Alojamento");
+            System.out.println("8- Criar Atividade");
+            System.out.println("9- Criar Pacote");
 
             System.out.println("0- Sair");
             Opcao= utilitarios.readLineFromConsole("Introduza a opção\n");
@@ -53,6 +54,10 @@ public class MenuUI {
             }
             if (Opcao.equalsIgnoreCase("8")){
                 UIOAtividade ui=new UIOAtividade(organizacao);
+                ui.run();
+            }
+            if (Opcao.equalsIgnoreCase("9")){
+                UIPacote ui=new UIPacote(organizacao);
                 ui.run();
             }
 
