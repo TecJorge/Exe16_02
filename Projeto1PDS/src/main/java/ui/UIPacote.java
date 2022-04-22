@@ -3,84 +3,95 @@ package ui;
 import controller.ControllerPacote;
 import domain.Alojamento;
 import domain.Atividade;
+import domain.Data;
 import domain.Organizacao;
 import utils.utilitarios;
-
-import domain.Date;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class UIPacote {
     private Organizacao organizacao;
     private ControllerPacote controller;
-    public UIPacote(Organizacao organizacao){
-        this.organizacao=organizacao;
-        this.controller=new ControllerPacote(organizacao);
+
+    public UIPacote(Organizacao organizacao) {
+        this.organizacao = organizacao;
+        this.controller = new ControllerPacote(organizacao);
     }
+
     public void run() {
         System.out.println("Novo Pacote");
         introduzDados(controller);
         if ((utilitarios.confirma("Confirma os Dados do tipo de Atividade [S|N]")))
-                System.out.println("Pacote Guardado");
-            else {
-                System.out.println("Pacote não guardado");
-            }
-            apresentaDados();
+            System.out.println("Pacote Guardado");
+        else {
+            System.out.println("Pacote não guardado");
         }
-    public void introduzDados(ControllerPacote controller){
-        boolean flag=false;
-        String desc=utilitarios.readLineFromConsole("Introduza a descrição do Pacote");
+        apresentaDados();
+    }
+
+    public void introduzDados(ControllerPacote controller) {
+        boolean flag = false;
+        String desc = utilitarios.readLineFromConsole("Introduza a descrição do Pacote");
         controller.CriarPacote(desc);
         do {
-            Date data= new Date();
-            ArrayList<Alojamento> arrayListAlojamento=new ArrayList<>();
-            ArrayList<Atividade> arrayListAtividade=new ArrayList<>();
+
+            ArrayList<Alojamento> arrayListAlojamento = new ArrayList<>();
+            ArrayList<Atividade> arrayListAtividade = new ArrayList<>();
             String option = utilitarios.readLineFromConsole("Introduza a Opção desejada \n 1- Adicionar Alojamento  \n2-Adicionar Atividade \n3- Remover Alojamentos \n4- Remover Atividade \n-Finalizar o Pactoe");
-            if (option.equalsIgnoreCase("1")){
-                int nPessoas=Integer.valueOf(utilitarios.readLineFromConsole("Introduza o numero de pessoas que vão estar presentes"));
-                data= this.CriarData();
-            arrayListAlojamento=this.IterarLista(controller.getAlojamento(),data,nPessoas);
-                controller.guardarAlojamentoPacote((Alojamento) utilitarios.apresentaESeleciona(arrayListAlojamento, "Alojamentos Disponiveis"));}
-            else if (option.equalsIgnoreCase("2")) {
-                data= this.CriarData();
-                arrayListAtividade=this.IterarListaAtividade(controller.getAtividade(),data);
-                controller.guardarAtividadePacote((Atividade) utilitarios.apresentaESeleciona(arrayListAtividade, "Atividades Disponiveis"));
-            }else if (option.equalsIgnoreCase("3"))
-                controller.removerAlojamentoPacote((Alojamento) utilitarios.apresentaESeleciona(controller.getPacote().getListaAlojamento(),"Alojamentos Armazenados até ao momento"));
+            if (option.equalsIgnoreCase("1")) {
+                int nPessoas = Integer.valueOf(utilitarios.readLineFromConsole("Introduza o numero de pessoas que vão estar presentes"));
+                Data data = this.CriarData();
+                arrayListAlojamento = this.IterarLista(controller.getAlojamento(), data, nPessoas);
+                if (!arrayListAlojamento.isEmpty()) {
+                    controller.guardarAlojamentoPacote((Alojamento) utilitarios.apresentaESeleciona(arrayListAlojamento, "Alojamentos Disponiveis"));
+                } else {
+                    System.out.println("Não existem alojamentos para os critérios inseridos");
+                }
+            } else if (option.equalsIgnoreCase("2")) {
+                Data data = this.CriarData();
+                arrayListAtividade = this.IterarListaAtividade(controller.getAtividade(), data);
+                if (!arrayListAtividade.isEmpty()) {
+                    controller.guardarAtividadePacote((Atividade) utilitarios.apresentaESeleciona(arrayListAtividade, "Atividades Disponiveis"));
+                } else System.out.println("Não existem atividades para os critérios inseridos");
+            } else if (option.equalsIgnoreCase("3"))
+                controller.removerAlojamentoPacote((Alojamento) utilitarios.apresentaESeleciona(controller.getPacote().getListaAlojamento(), "Alojamentos Armazenados até ao momento"));
             else if (option.equalsIgnoreCase("4"))
-                controller.removerAtividadePacote((Atividade) utilitarios.apresentaESeleciona(controller.getPacote().getListaAtividades(),"Atividades Armazenados até ao momento"));
-               else
-                flag=true;
-        }while (!flag);
-            System.out.println("Fim da criação do Pacote");
+                controller.removerAtividadePacote((Atividade) utilitarios.apresentaESeleciona(controller.getPacote().getListaAtividades(), "Atividades Armazenados até ao momento"));
+            else
+                flag = true;
+        } while (!flag);
+        System.out.println("Fim da criação do Pacote");
     }
-    public void apresentaDados(){
-        System.out.printf("Pacote \n%s",controller.getPacote());
+
+    public void apresentaDados() {
+        System.out.printf("Pacote \n%s", controller.getPacote());
     }
-    public Date CriarData(){
+
+    public Data CriarData() {
         String dia = utilitarios.readLineFromConsole("Introduza o Dia que pretende");
         String mes = utilitarios.readLineFromConsole("Introduza o Mês que pretende em formato numérico");
         String ano = utilitarios.readLineFromConsole("Introduza o Ano");
-        return new Date(Integer.valueOf(dia),Integer.valueOf(mes),Integer.valueOf(ano));
+        return new Data(Integer.valueOf(dia), Integer.valueOf(mes), Integer.valueOf(ano));
     }
-    public ArrayList<Alojamento> IterarLista(List<Alojamento> arr, Date data , int nPessoas){
-        ArrayList<Alojamento> list=new ArrayList<>();
-        String diaS1,diaS2;
-        for (Alojamento x: arr) {
-            diaS1= String.valueOf(x.getData().getDiaSemana());
-            diaS2= String.valueOf(data.getDiaSemana());
-            if (diaS1.equalsIgnoreCase(diaS2)&& x.getQntdMin()>=nPessoas &&x.getQntdMax()>=nPessoas)
+
+    public ArrayList<Alojamento> IterarLista(List<Alojamento> arr, Data data, int nPessoas) {
+        ArrayList<Alojamento> list = new ArrayList<>();
+        String diaS1, diaS2;
+        for (Alojamento x : arr) {
+            diaS1 = String.valueOf(x.getData().getDiaSemana());
+            diaS2 = String.valueOf(data.getsDiaSemana());
+            if (diaS1.equalsIgnoreCase(diaS2) && x.getQntdMin() <= nPessoas && x.getQntdMax() >= nPessoas)
                 list.add(x);
         }
         return list;
     }
-    public ArrayList<Atividade> IterarListaAtividade(List<Atividade> arr, Date data){
-        String diaS1,diaS2;
-        ArrayList<Atividade> list=new ArrayList<>();
-        for (Atividade x: arr) {
-            diaS1= String.valueOf(x.getData().getDiaSemana());
-            diaS2= String.valueOf(data.getDiaSemana());
+
+    public ArrayList<Atividade> IterarListaAtividade(List<Atividade> arr, Data data) {
+        String diaS1, diaS2;
+        ArrayList<Atividade> list = new ArrayList<>();
+        for (Atividade x : arr) {
+            diaS1 = String.valueOf(x.getData().getsDiaSemana());
+            diaS2 = String.valueOf(data.getsDiaSemana());
             if (diaS1.equalsIgnoreCase(diaS2))
                 list.add(x);
         }

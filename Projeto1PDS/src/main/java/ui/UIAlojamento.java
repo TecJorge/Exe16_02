@@ -2,7 +2,7 @@ package ui;
 
 import controller.ControllerAlojamento;
 import domain.*;
-import domain.Date;
+import domain.Data;
 import utils.utilitarios;
 
 import java.lang.reflect.Array;
@@ -46,7 +46,7 @@ public class UIAlojamento {
         List dias=Traduz(DayOfWeek.values());
        utilitarios.apresentaLista(dias,"Dias da Semana");
         String dia=utilitarios.readLineFromConsole("Escolha um dia da semana dos Seguintes").toUpperCase(Locale.ROOT);
-      Date data=new Date();
+      Data data=new Data();
        data.setDiaSemana(DayOfWeek.of(Integer.valueOf(dia)));
        double preco=Double.valueOf(utilitarios.readLineFromConsole("Introduza um preço"));
         controller.CriarAlojamento(denominação,tipoAlojamento,local,qntdMax,qntdMin,data,preco);

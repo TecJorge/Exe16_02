@@ -3,24 +3,24 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Locale;
-import java.util.Objects;
+import java.util.Date;
 
-public class Date {
-    private int dia, mes, ano;
+public class Data {
+    private int dia, ano;
+    private int mes;
     private DayOfWeek diaSemana;
     private static final DayOfWeek diaSemanaDefault = DayOfWeek.FRIDAY;
-
-    public Date(int dia, int mes, int ano) {
+    public Data(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
     }
 
-    public Date(DayOfWeek diaSemana) {
+    public Data(DayOfWeek diaSemana) {
         this.diaSemana = diaSemana;
     }
 
-    public Date() {
+    public Data() {
         this.diaSemana = diaSemanaDefault;
     }
 
@@ -69,10 +69,9 @@ public class Date {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Date date = (Date) o;
+        Data date = (Data) o;
         return dia == date.dia && mes == date.mes && ano == date.ano;
     }
-
     private String diaSemana(Date d1) {
         DayOfWeek diaSemana;
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -81,5 +80,14 @@ public class Date {
         diaSemana = startDate.getDayOfWeek();
         return diaSemana.toString();
     }
-}
+    public String getsDiaSemana(){
+        String sMes= String.valueOf(Month.values()[this.mes-1]);
+        LocalDate dt=LocalDate.of(ano,Month.valueOf(sMes),dia);
+
+        return DayOfWeek.from(dt).toString();
+
+
+
+
+}}
 

@@ -1,5 +1,9 @@
 package domain;
 
+import domain.filters.AlojamentoFilter;
+import domain.filters.AlojamentoFilterNumerico;
+import domain.filters.TipoAlojamentoFilter;
+
 import java.util.*;
 
 public class Organizacao {
@@ -9,15 +13,61 @@ public class Organizacao {
     public List<Alojamento> oalojamentoList=new ArrayList<>();
     public List<Atividade>atividades=new ArrayList<>();
     public List<Pacote>pacoteList=new ArrayList<>();
-     public Organizacao(){
-         this.alojamentoList=new ArrayList<>();
-         this.localList=new ArrayList<>();
-         this.atividadeList=new ArrayList<>();
-         this.oalojamentoList=new ArrayList<>();
-         this.atividades=new ArrayList<>();
-         this.pacoteList=new ArrayList<>();
+    private final List<TipoAlojamentoFilter> m_listaTipoAlojamentoFilters;
+    private final List<AlojamentoFilter> m_listaAlojamentoFilters;
 
-     }
+    public Organizacao(List<String> listaStringClassesTipoAlojamentoFilters,List<String> listaStringClassesAlojamentoFilters )
+    {   this.alojamentoList=new ArrayList<>();
+        this.localList=new ArrayList<>();
+        this.atividadeList=new ArrayList<>();
+        this.oalojamentoList=new ArrayList<>();
+        this.atividades=new ArrayList<>();
+        this.pacoteList=new ArrayList<>();
+
+        if( listaStringClassesTipoAlojamentoFilters != null )
+            this.m_listaTipoAlojamentoFilters = createInstancesOfTipoAlojamentoFilters( listaStringClassesTipoAlojamentoFilters );
+        else
+            throw new IllegalArgumentException("TipoAlojamentoFilters não pode ser null.");
+        if( listaStringClassesAlojamentoFilters != null )
+            this.m_listaAlojamentoFilters= createInstancesOfAlojamentoFilters( listaStringClassesAlojamentoFilters );
+        else
+            throw new IllegalArgumentException("AlojamentoFilters não pode ser null.");
+    }
+
+    private List<TipoAlojamentoFilter> createInstancesOfTipoAlojamentoFilters( List<String> listaStringClassesTipoAlojamentoFilters ) {
+
+        List<TipoAlojamentoFilter> lTipoAlojamentoFilters = new ArrayList<TipoAlojamentoFilter>();
+
+        for (String strClassTipoAlojamentoFilter : listaStringClassesTipoAlojamentoFilters) {
+            try {
+                TipoAlojamentoFilter oTipoAlojamentoFilter = (TipoAlojamentoFilter) Class.forName(strClassTipoAlojamentoFilter).getDeclaredConstructor().newInstance();
+                lTipoAlojamentoFilters.add(oTipoAlojamentoFilter);
+            }
+            catch(Exception e) {
+                System.out.println( e.getMessage() );
+            }
+        }
+
+        return lTipoAlojamentoFilters;
+    }
+    private List<AlojamentoFilter> createInstancesOfAlojamentoFilters(List<String> listaStringClassesAlojamentoFilters ) {
+
+        List<AlojamentoFilter> lAlojamentoFilters = new ArrayList<AlojamentoFilter>();
+
+        for (String strClassAlojamentoFilter : listaStringClassesAlojamentoFilters) {
+            try {
+                AlojamentoFilter oAlojamentoFilter = (AlojamentoFilter) Class.forName(strClassAlojamentoFilter).getDeclaredConstructor().newInstance();
+                lAlojamentoFilters.add(oAlojamentoFilter);
+                AlojamentoFilterNumerico oAlojamentoFilternumerico = (AlojamentoFilterNumerico) Class.forName(strClassAlojamentoFilter).getDeclaredConstructor().newInstance();
+                lAlojamentoFilters.add((AlojamentoFilter) oAlojamentoFilternumerico);
+            }
+            catch(Exception e) {
+                System.out.println( e.getMessage() );
+            }
+        }
+
+        return lAlojamentoFilters;
+    }
 
     public List<TipoAlojamento> getAlojamentoList() {
         return alojamentoList;
@@ -45,9 +95,9 @@ public class Organizacao {
 
     public Local novoLocal(String cid , String pais){return new Local(cid,pais);}
 
-    public Alojamento novoOAlojamento(String denominação,TipoAlojamento tipoAlojamento,Local local,int qntdMax,int qntdMin,Date data, double preco){return new Alojamento(denominação,tipoAlojamento,local,qntdMax,qntdMin,data,preco);}
+    public Alojamento novoOAlojamento(String denominação,TipoAlojamento tipoAlojamento,Local local,int qntdMax,int qntdMin,Data data, double preco){return new Alojamento(denominação,tipoAlojamento,local,qntdMax,qntdMin,data,preco);}
 
-    public Atividade novoOAtividade(String denominação,TipoAtividade tipoAtividade,Local localc,Local localp,Date data, double preco,Tempo tempoi,Tempo tempof){return new Atividade(denominação,tipoAtividade,localc,localp,data,preco,tempoi,tempof);}
+    public Atividade novoOAtividade(String denominação,TipoAtividade tipoAtividade,Local localc,Local localp,Data data, double preco,Tempo tempoi,Tempo tempof){return new Atividade(denominação,tipoAtividade,localc,localp,data,preco,tempoi,tempof);}
 
      public boolean validaAlujamento(TipoAlojamento obj1) {
 
@@ -100,6 +150,36 @@ public class Organizacao {
         if (o == null || getClass() != o.getClass()) return false;
         Organizacao that = (Organizacao) o;
         return Objects.equals(alojamentoList, that.alojamentoList) && Objects.equals(localList, that.localList);
+    }
+    public List<TipoAlojamentoFilter> getTipoAlojamentoFilters() {
+        return this.m_listaTipoAlojamentoFilters;
+    }
+
+    public List<AlojamentoFilter> getlistaAlojamentoFilters() {
+        return this. m_listaAlojamentoFilters;
+    }
+
+    public List<TipoAlojamento> filtrarTiposAlojamento(TipoAlojamentoFilter filtro, String string ) {
+
+        List<TipoAlojamento> listaFiltrada = new ArrayList<TipoAlojamento>();
+
+        for (TipoAlojamento oTipoAlojamento :alojamentoList) {
+
+            if( filtro.complies( oTipoAlojamento, string ) )
+                listaFiltrada.add( oTipoAlojamento );
+        }
+        return listaFiltrada;
+    }
+    public List<Alojamento> filtrarAlojamento(AlojamentoFilter filtro, String string ) {
+
+        List<Alojamento> listaFiltrada = new ArrayList<Alojamento>();
+
+        for (Alojamento oAlojamento : oalojamentoList) {
+
+            if( filtro.complies( oAlojamento, string ) )
+                listaFiltrada.add( oAlojamento );
+        }
+        return listaFiltrada;
     }
 
 }

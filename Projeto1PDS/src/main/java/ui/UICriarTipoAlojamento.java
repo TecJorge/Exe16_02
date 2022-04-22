@@ -2,7 +2,10 @@ package ui;
 
 import controller.ControllerTipoAlojamento;
 import domain.Organizacao;
+import domain.filters.TipoAlojamentoFilter;
 import utils.utilitarios;
+
+import java.util.List;
 
 public class UICriarTipoAlojamento {
     private Organizacao organizacao;

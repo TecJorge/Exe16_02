@@ -53,7 +53,7 @@ public class UIOAtividade {
         List dias=Traduz(DayOfWeek.values());
         utilitarios.apresentaLista(dias,"Dias da Semana");
         String dia=utilitarios.readLineFromConsole("Escolha um dia da semana dos Seguintes").toUpperCase(Locale.ROOT);
-        Date data=new Date();
+        Data data=new Data();
         data.setDiaSemana(DayOfWeek.of(Integer.valueOf(dia)));
         double preco=Double.valueOf(utilitarios.readLineFromConsole("Introduza um preço"));
 

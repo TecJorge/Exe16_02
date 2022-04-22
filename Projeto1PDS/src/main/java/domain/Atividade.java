@@ -4,10 +4,10 @@ public class Atividade {
     private String denominação;
     private TipoAtividade tipoAtividade;
     private Local localc,localp;
-    private Date data;
+    private Data data;
     private double preco;
     private Tempo tempoInicio,tempoFim;
-    public Atividade(String denominação, TipoAtividade tipoAtividade, Local localc, Local localp, Date data, double preco, Tempo tempoInicio, Tempo tempoFim) {
+    public Atividade(String denominação, TipoAtividade tipoAtividade, Local localc, Local localp, Data data, double preco, Tempo tempoInicio, Tempo tempoFim) {
         this.denominação=denominação;
         this.tipoAtividade=tipoAtividade;
         this.localc=localc;
@@ -18,7 +18,7 @@ public class Atividade {
         this.tempoFim=tempoFim;
     }
 
-    public Date getData() {
+    public Data getData() {
         return data;
     }
 

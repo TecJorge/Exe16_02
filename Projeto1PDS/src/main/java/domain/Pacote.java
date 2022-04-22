@@ -54,19 +54,19 @@ public class Pacote {
 
     @Override
     public String toString() {
-       return String.format("O Pacote %s é composto por : %s e tem um preço total de %.2f EUR",descricao,listar(),preco);
+       return String.format("O Pacote %s é composto por : %s \n\nPreço total de %.2f EUR",descricao,listar(),preco);
     }
     public StringBuilder listar(){
         StringBuilder str = new StringBuilder();
         if (this.listaAlojamento.isEmpty());
         else {
-            str.append("Alojamentos:\n");
+            str.append("\nAlojamentos:\n");
         for (Alojamento alojamento :this.listaAlojamento) {
             str.append(alojamento);
         }}
         if (this.listaAtividades.isEmpty());
         else {
-            str.append("Atividades\n");
+            str.append("\nAtividades:\n");
         for (Atividade atividade:this.listaAtividades
              ) {
            str.append(atividade);
