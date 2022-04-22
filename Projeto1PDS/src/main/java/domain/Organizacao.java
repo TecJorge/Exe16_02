@@ -58,8 +58,7 @@ public class Organizacao {
             try {
                 AlojamentoFilter oAlojamentoFilter = (AlojamentoFilter) Class.forName(strClassAlojamentoFilter).getDeclaredConstructor().newInstance();
                 lAlojamentoFilters.add(oAlojamentoFilter);
-                AlojamentoFilterNumerico oAlojamentoFilternumerico = (AlojamentoFilterNumerico) Class.forName(strClassAlojamentoFilter).getDeclaredConstructor().newInstance();
-                lAlojamentoFilters.add((AlojamentoFilter) oAlojamentoFilternumerico);
+
             }
             catch(Exception e) {
                 System.out.println( e.getMessage() );
