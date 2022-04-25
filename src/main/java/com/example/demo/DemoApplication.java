@@ -34,6 +34,8 @@ public class DemoApplication {
 	@Bean
 	public CommandLineRunner demo(PersonService personService, CountryService countryService, GroupService groupService, RoleService roleService ) {
 		return (args) -> {
+
+			/*
 			// create and save a few countries
 			Country countryPT = countryService.createAndSaveCountry("PT", "Portugal");
 			Country countryUSA = countryService.createAndSaveCountry("USA", "United States of America");
@@ -111,6 +113,7 @@ public class DemoApplication {
 			for( PersonId adminId : adminsId ) {
 				log.info( adminId.toString() );
 			}
+			*/
 		};
 	}
 }
