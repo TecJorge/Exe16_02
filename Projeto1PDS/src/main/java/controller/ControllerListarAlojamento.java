@@ -24,7 +24,7 @@ public class ControllerListarAlojamento {
     public List<AlojamentoFilter> getAlojamentoFilters() {
         return this.organizacao.getlistaAlojamentoFilters();
     }
-    public List<Alojamento> filtrar(AlojamentoFilter filter, String string) {
+    public List<Alojamento> filtrar(AlojamentoFilter filter, String string) throws Exception {
         List<Alojamento> lista = this.organizacao.filtrarAlojamento( filter, string );
 
         return lista;

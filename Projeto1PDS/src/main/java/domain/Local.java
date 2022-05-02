@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Local {
     private String cid,pais;
     private final String cidDefault="Indefinido";
-    Local(String cid,String pais){
+    public Local(String cid,String pais){
         this.cid=cid;
         this.pais=pais;
     }

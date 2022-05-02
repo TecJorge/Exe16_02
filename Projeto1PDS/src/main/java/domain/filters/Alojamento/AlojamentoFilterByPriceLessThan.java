@@ -9,8 +9,13 @@ public class AlojamentoFilterByPriceLessThan implements AlojamentoFilter {
     public String getName() {
         return NAME;
     }
-    public boolean complies(Alojamento ta,String number) {
+    public boolean complies(Alojamento ta,String number) throws Exception {
+        if (number.isEmpty())
+            throw new Exception("Deve ser introduzido um valor");
+        double inputPrice=Double.valueOf(number);
+        if (inputPrice<0)
+            throw new Exception("Preço introduzido não pode ter valor negativo");
         double price=ta.getPreco();
-       return price<Double.valueOf(number);
+       return price>inputPrice;
     }
 }

@@ -9,7 +9,7 @@ public class MenuUI {
     private Organizacao organizacao;
     private String Opcao;
     public MenuUI(Organizacao organizacao){this.organizacao=organizacao;}
-    public void run()throws IOException {
+    public void run() throws Exception {
         do {
             System.out.println("\n\n");
             System.out.println("1- Especificar Tipo de Alojamento");

@@ -1,5 +1,6 @@
 package ui;
 
+import domain.Factories.*;
 import domain.Organizacao;
 import org.apache.commons.configuration2.Configuration;
 import org.apache.commons.configuration2.builder.fluent.Configurations;
@@ -12,6 +13,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         {
+
             String[] listStringClassesTipoAlojamentoFilters = {};
             String[] listStringClassesAlojamentoFilters={};
             Configurations configs = new Configurations();
@@ -28,11 +30,22 @@ public class Main {
                 // Something went wrong
             }
        try{
-           Organizacao organizacao=new Organizacao(Arrays.asList(listStringClassesTipoAlojamentoFilters),Arrays.asList(listStringClassesAlojamentoFilters));
+           FactoryAlojamento factoryAlojamento=new FactoryAlojamento();
+           FactoryAtividade factoryAtividade=new FactoryAtividade();
+           FactoryLocal factoryLocal=new FactoryLocal();
+           FactoryTipoAlojamento factoryTipoAlojamento=new FactoryTipoAlojamento();
+           FactoryTipoAtividade factoryTipoAtividade=new FactoryTipoAtividade();
+           FactoryPacote factoryPacote=new FactoryPacote();
+           FactoryTipoAlojamentoFilter factoryTipoAlojamentoFilters=new FactoryTipoAlojamentoFilter();
+           FactoryAlojamentoFilters factoryAlojamentoFilters=new FactoryAlojamentoFilters();
+           Organizacao organizacao=new Organizacao(Arrays.asList(listStringClassesTipoAlojamentoFilters),Arrays.asList(listStringClassesAlojamentoFilters),factoryTipoAlojamento,factoryTipoAtividade,factoryAtividade,factoryAlojamento,factoryLocal,factoryPacote,factoryTipoAlojamentoFilters,factoryAlojamentoFilters);
         MenuUI menuUI=new MenuUI(organizacao);
         menuUI.run();
        }catch (IOException e){
            e.printStackTrace();
-       }}}}
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+        }}}
 
 

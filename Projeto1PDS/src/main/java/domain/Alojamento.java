@@ -13,7 +13,7 @@ public class Alojamento {
     private Data data;
     private double preco;
 
-    Alojamento(String denominacao,TipoAlojamento tipoAlojamento,Local local,int qntdMax,int qntdMin,Data data, double preco){
+    public Alojamento(String denominacao,TipoAlojamento tipoAlojamento,Local local,int qntdMax,int qntdMin,Data data, double preco){
         this.denominacao=denominacao;
         this.tipoAlojamento=tipoAlojamento;
         this.local=local;

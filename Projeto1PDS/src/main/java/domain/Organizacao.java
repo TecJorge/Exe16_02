@@ -1,10 +1,12 @@
 package domain;
 
+import domain.Factories.*;
 import domain.filters.AlojamentoFilter;
 import domain.filters.AlojamentoFilterNumerico;
 import domain.filters.TipoAlojamentoFilter;
 
 import java.util.*;
+import java.util.List;
 
 public class Organizacao {
     private List<TipoAlojamento> alojamentoList=new ArrayList<>();
@@ -13,17 +15,49 @@ public class Organizacao {
     public List<Alojamento> oalojamentoList=new ArrayList<>();
     public List<Atividade>atividades=new ArrayList<>();
     public List<Pacote>pacoteList=new ArrayList<>();
+    public FactoryAlojamento factoryAlojamento;
+    public FactoryAtividade factoryAtividade;
+    public FactoryPacote factoryPacote;
+    public FactoryLocal factoryLocal;
+    public FactoryTipoAtividade factoryTipoAtividade;
+    public FactoryTipoAlojamento factoryTipoAlojamento;
     private final List<TipoAlojamentoFilter> m_listaTipoAlojamentoFilters;
     private final List<AlojamentoFilter> m_listaAlojamentoFilters;
+    public FactoryAlojamentoFilters factoryAlojamentoFilters;
+    public FactoryTipoAlojamentoFilter factoryTipoAlojamentoFilter;
 
-    public Organizacao(List<String> listaStringClassesTipoAlojamentoFilters,List<String> listaStringClassesAlojamentoFilters )
+
+    public Organizacao(List<String> listaStringClassesTipoAlojamentoFilters, List<String> listaStringClassesAlojamentoFilters, FactoryTipoAlojamento factoryTipoAlojamento, FactoryTipoAtividade factoryTipoAtividade, FactoryAtividade factoryAtividade, FactoryAlojamento factoryAlojamento, FactoryLocal factoryLocal,FactoryPacote factoryPacote, FactoryTipoAlojamentoFilter factoryTipoAlojamentoFilter,FactoryAlojamentoFilters factoryAlojamentoFilters)
     {   this.alojamentoList=new ArrayList<>();
         this.localList=new ArrayList<>();
         this.atividadeList=new ArrayList<>();
         this.oalojamentoList=new ArrayList<>();
         this.atividades=new ArrayList<>();
         this.pacoteList=new ArrayList<>();
-
+        if (factoryAlojamento !=null)
+            this.factoryAlojamento=factoryAlojamento;
+        else
+            throw new NullPointerException("A Factory do Alojamento não pode ser null!");
+        if (factoryAtividade !=null)
+            this.factoryAtividade=factoryAtividade;
+        else
+            throw new NullPointerException("A Factory da Atividade não pode ser null!");
+        if (factoryPacote!=null)
+            this.factoryPacote=factoryPacote;
+        else
+            throw new NullPointerException("A Factory do Pacote não pode ser null!");
+        if (factoryLocal!=null)
+            this.factoryLocal=factoryLocal;
+        else
+            throw new NullPointerException("A Factory do Local não pode ser null!");
+        if (factoryTipoAtividade!= null)
+            this.factoryTipoAtividade=factoryTipoAtividade;
+        else
+            throw new NullPointerException("A Factory do Tipo Atividade não pode ser null!");
+        if(factoryTipoAlojamento!=null)
+            this.factoryTipoAlojamento=factoryTipoAlojamento;
+        else
+            throw new NullPointerException("A Factory do Tupi de Alojamento não pode ser null!");
         if( listaStringClassesTipoAlojamentoFilters != null )
             this.m_listaTipoAlojamentoFilters = createInstancesOfTipoAlojamentoFilters( listaStringClassesTipoAlojamentoFilters );
         else
@@ -32,40 +66,21 @@ public class Organizacao {
             this.m_listaAlojamentoFilters= createInstancesOfAlojamentoFilters( listaStringClassesAlojamentoFilters );
         else
             throw new IllegalArgumentException("AlojamentoFilters não pode ser null.");
+        if (factoryAlojamentoFilters!=null)
+            this.factoryAlojamentoFilters=factoryAlojamentoFilters;
+        else
+            throw new NullPointerException("A Factory AlojamentoFilters não pode ser Null!");
+        if (factoryTipoAlojamentoFilter!=null)
+            this.factoryTipoAlojamentoFilter=factoryTipoAlojamentoFilter;
+        else
+            throw new NullPointerException("A Factory TipoAlojamento Filters não pode ser null!");
     }
 
     private List<TipoAlojamentoFilter> createInstancesOfTipoAlojamentoFilters( List<String> listaStringClassesTipoAlojamentoFilters ) {
-
-        List<TipoAlojamentoFilter> lTipoAlojamentoFilters = new ArrayList<TipoAlojamentoFilter>();
-
-        for (String strClassTipoAlojamentoFilter : listaStringClassesTipoAlojamentoFilters) {
-            try {
-                TipoAlojamentoFilter oTipoAlojamentoFilter = (TipoAlojamentoFilter) Class.forName(strClassTipoAlojamentoFilter).getDeclaredConstructor().newInstance();
-                lTipoAlojamentoFilters.add(oTipoAlojamentoFilter);
-            }
-            catch(Exception e) {
-                System.out.println( e.getMessage() );
-            }
-        }
-
-        return lTipoAlojamentoFilters;
+        return factoryTipoAlojamentoFilter.createInstancesOfTipoAlojamentoFilters(listaStringClassesTipoAlojamentoFilters);
     }
     private List<AlojamentoFilter> createInstancesOfAlojamentoFilters(List<String> listaStringClassesAlojamentoFilters ) {
-
-        List<AlojamentoFilter> lAlojamentoFilters = new ArrayList<AlojamentoFilter>();
-
-        for (String strClassAlojamentoFilter : listaStringClassesAlojamentoFilters) {
-            try {
-                AlojamentoFilter oAlojamentoFilter = (AlojamentoFilter) Class.forName(strClassAlojamentoFilter).getDeclaredConstructor().newInstance();
-                lAlojamentoFilters.add(oAlojamentoFilter);
-
-            }
-            catch(Exception e) {
-                System.out.println( e.getMessage() );
-            }
-        }
-
-        return lAlojamentoFilters;
+    return factoryAlojamentoFilters.createInstancesOfAlojamentoFilters(listaStringClassesAlojamentoFilters);
     }
 
     public List<TipoAlojamento> getAlojamentoList() {
@@ -86,17 +101,17 @@ public class Organizacao {
     return String.format("A Organização contem %s\n%s\n%s\n%s\n%s",alojamentoList,localList,atividadeList,oalojamentoList,atividades);
     }
 
-    public TipoAlojamento novoAlojamento(String desc){return new TipoAlojamento(desc);}
+    public TipoAlojamento novoAlojamento(String desc){return factoryTipoAlojamento.criaTipoAlojamento(desc);}
 
-    public Pacote novoPacote(String desc){return new Pacote(desc);}
+    public Pacote novoPacote(String desc){return factoryPacote.criaPacote(desc);}
 
-    public TipoAtividade novaAtividade(String desc){return new TipoAtividade(desc);}
+    public TipoAtividade novaAtividade(String desc){return factoryTipoAtividade.criaTipoAtividade(desc);}
 
-    public Local novoLocal(String cid , String pais){return new Local(cid,pais);}
+    public Local novoLocal(String cid , String pais){return factoryLocal.criaLocal(cid,pais);}
 
-    public Alojamento novoOAlojamento(String denominação,TipoAlojamento tipoAlojamento,Local local,int qntdMax,int qntdMin,Data data, double preco){return new Alojamento(denominação,tipoAlojamento,local,qntdMax,qntdMin,data,preco);}
+    public Alojamento novoOAlojamento(String denominação,TipoAlojamento tipoAlojamento,Local local,int qntdMax,int qntdMin,Data data, double preco){return factoryAlojamento.criaAlojamento(denominação, tipoAlojamento, local, qntdMax, qntdMin, data, preco);}
 
-    public Atividade novoOAtividade(String denominação,TipoAtividade tipoAtividade,Local localc,Local localp,Data data, double preco,Tempo tempoi,Tempo tempof){return new Atividade(denominação,tipoAtividade,localc,localp,data,preco,tempoi,tempof);}
+    public Atividade novoOAtividade(String denominação,TipoAtividade tipoAtividade,Local localc,Local localp,Data data, double preco,Tempo tempoi,Tempo tempof){return factoryAtividade.criaAtividade(denominação, tipoAtividade, localc, localp, data, preco, tempoi, tempof);}
 
      public boolean validaAlujamento(TipoAlojamento obj1) {
 
@@ -169,7 +184,7 @@ public class Organizacao {
         }
         return listaFiltrada;
     }
-    public List<Alojamento> filtrarAlojamento(AlojamentoFilter filtro, String string ) {
+    public List<Alojamento> filtrarAlojamento(AlojamentoFilter filtro, String string ) throws Exception {
 
         List<Alojamento> listaFiltrada = new ArrayList<Alojamento>();
 

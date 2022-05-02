@@ -17,7 +17,7 @@ public class UIListarAlojamento {
         this.organizacao=organizacao;
         this.controller=new ControllerListarAlojamento(organizacao);
     }
-    public void run() {
+    public void run() throws Exception {
 
         System.out.println("\nListar  Alojamento:");
 

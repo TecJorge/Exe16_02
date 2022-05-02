@@ -8,7 +8,7 @@ public class Pacote {
     private List<Alojamento> listaAlojamento;
     private double preco;
     private String descricao;
-    Pacote (String descricao ){
+    public Pacote (String descricao ){
         this.descricao=descricao;
         this.listaAlojamento=new ArrayList<>();
         this.listaAtividades=new ArrayList<>();
