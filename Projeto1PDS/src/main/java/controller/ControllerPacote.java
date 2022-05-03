@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ControllerPacote {
+public class ControllerPacote implements ui.controllerInterface.iControllerPacote{
     private Pacote pacote;
     private Organizacao organizacao;
 

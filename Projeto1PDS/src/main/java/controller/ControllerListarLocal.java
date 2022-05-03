@@ -4,7 +4,7 @@ import domain.Organizacao;
 
 import java.util.List;
 
-public class ControllerListarLocal {
+public class ControllerListarLocal implements ui.controllerInterface.iControllerListarLocal {
     private List tipoLocallist;
     private Organizacao organizacao;
     public ControllerListarLocal(Organizacao organizacao){

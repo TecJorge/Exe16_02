@@ -2,7 +2,7 @@ package controller;
 
 import domain.*;
 
-public class ControllerAlojamento {
+public class ControllerAlojamento implements ui.controllerInterface.iControllerAlojamento {
     private domain.Alojamento Alojamento;
     private Organizacao organizacao;
 
@@ -14,11 +14,9 @@ public class ControllerAlojamento {
         Alojamento = organizacao.novoOAlojamento(denominação,tipoAlojamento,local,qntdMax,qntdMin,data,preco);
         organizacao.validaoAlujamento(Alojamento);
     }
-
     public boolean guardarAlojamento() {
         return this.organizacao.guardaTipoOAlojamento(Alojamento);
     }
-
     public String getAlojamento() {
         return String.format(Alojamento.toString());
     }

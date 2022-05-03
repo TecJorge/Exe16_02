@@ -1,18 +1,34 @@
 package ui;
 
+import controller.ControllerAlojamento;
 import controller.ControllerListarAtividade;
 import domain.Organizacao;
+import org.apache.commons.configuration2.ex.ConfigurationException;
 import utils.utilitarios;
 
-public class UIListarAtividade {
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+
+public class UIListarAtividade implements UI{
     private Organizacao organizacao;
     private ControllerListarAtividade controller;
-    public UIListarAtividade(Organizacao organizacao){
+    public UIListarAtividade(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao=organizacao;
-        this.controller=new ControllerListarAtividade(organizacao);
+        this.controller=createInstancesOfController();
     }
-    public void run() {
+    public void run(List<String> listStringController) {
         utilitarios.apresentaLista(organizacao.getAtividadeList(),"Lista de Atividades");
+    }
+
+    @Override
+    public String getMenuDescription() {
+        return "Listar Atividade\n";
+    }
+    // Codigo para gerar o controller
+    public ControllerListarAtividade createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+        String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerListarAtividade");
+        ControllerListarAtividade controller=(ControllerListarAtividade) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+        return controller;
     }
 }
 

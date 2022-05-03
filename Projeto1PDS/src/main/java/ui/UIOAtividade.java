@@ -1,9 +1,12 @@
 package ui;
 
+import controller.ControllerAlojamento;
 import controller.ControllerOAtividade;
 import domain.*;
+import org.apache.commons.configuration2.ex.ConfigurationException;
 import utils.utilitarios;
 
+import java.lang.reflect.InvocationTargetException;
 import java.time.DayOfWeek;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
@@ -12,14 +15,14 @@ import java.util.Locale;
 
 
 
-public class UIOAtividade {
+public class UIOAtividade implements UI {
     private Organizacao organizacao;
     private ControllerOAtividade controller;
-    public UIOAtividade(Organizacao organizacao){
+    public UIOAtividade(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao=organizacao;
-        this.controller=new ControllerOAtividade(organizacao);
+        this.controller=createInstancesOfController();
     }
-    public void run() {
+    public void run(List<String> listStringController) {
         System.out.println("Nova Atividade");
         introduzDados();
         if ((utilitarios.confirma("Confirma os Dados da Atividade [S|N]"))) {
@@ -32,6 +35,12 @@ public class UIOAtividade {
             apresentaDados();
         }
     }
+
+    @Override
+    public String getMenuDescription() {
+        return "Criar Atividade\n";
+    }
+
     public void introduzDados(){
         String denominação=utilitarios.readLineFromConsole("Introduza uma denominação");
         System.out.println("De momento estão disponiveis os seguintes Tipos de Atividades");
@@ -68,6 +77,12 @@ public class UIOAtividade {
             dayOfWeeks.add((x.getDisplayName(TextStyle.FULL_STANDALONE,new Locale(System.getProperty("user.country.format")))));
         }
         return dayOfWeeks;
+    }
+    // Codigo para gerar o controller
+    public ControllerOAtividade createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+        String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerOAtividade");
+        ControllerOAtividade controller=(ControllerOAtividade) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+        return controller;
     }
 }
 

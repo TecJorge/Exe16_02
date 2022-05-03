@@ -3,7 +3,7 @@ package controller;
 import domain.Organizacao;
 import domain.TipoAtividade;
 
-public class ControllerAtividade {
+public class ControllerAtividade implements ui.controllerInterface.iControllerAtividade {
         private TipoAtividade tipoAtividade;
         private Organizacao organizacao;
 

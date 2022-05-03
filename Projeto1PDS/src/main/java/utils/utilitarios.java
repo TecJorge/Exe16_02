@@ -1,6 +1,11 @@
 package utils;
 
+import org.apache.commons.configuration2.Configuration;
+import org.apache.commons.configuration2.builder.fluent.Configurations;
+import org.apache.commons.configuration2.ex.ConfigurationException;
+
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -94,6 +99,29 @@ public class utilitarios {
         {
             return list.get(nOpcao - 1);
         }
+    }
+    static public String readConfigString(String strElement) throws ConfigurationException, org.apache.commons.configuration2.ex.ConfigurationException {
+
+        Configurations configs = new Configurations();
+
+        Configuration config = configs.properties(new File("config.properties"));
+
+        // access configuration properties
+        String strRead = config.getString( strElement );
+
+        return strRead;
+    }
+
+    static public String[] readConfigArrayString(String strElement) throws ConfigurationException, org.apache.commons.configuration2.ex.ConfigurationException {
+
+        Configurations configs = new Configurations();
+
+        Configuration config = configs.properties(new File("config.properties"));
+
+        // access configuration properties
+        String[] listStrRead = config.getStringArray( strElement );
+
+        return listStrRead;
     }
 
 }

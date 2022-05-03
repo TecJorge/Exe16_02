@@ -1,39 +1,47 @@
 package ui;
 
+import controller.ControllerAlojamento;
 import controller.ControllerListarAlojamento;
 import domain.Alojamento;
 import domain.Organizacao;
-import domain.TipoAlojamento;
 import domain.filters.AlojamentoFilter;
-import domain.filters.TipoAlojamentoFilter;
+import org.apache.commons.configuration2.ex.ConfigurationException;
 import utils.utilitarios;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class UIListarAlojamento {
+public class UIListarAlojamento implements UI {
     private Organizacao organizacao;
     private ControllerListarAlojamento controller;
-    public UIListarAlojamento(Organizacao organizacao){
+    public UIListarAlojamento(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao=organizacao;
-        this.controller=new ControllerListarAlojamento(organizacao);
+        this.controller=createInstancesOfController();
     }
-    public void run() throws Exception {
+    public void run(List<String> listStringController){
+        try {
+            System.out.println("\nListar  Alojamento:");
 
-        System.out.println("\nListar  Alojamento:");
+            AlojamentoFilter AlojamentoFilter = readAlojamentoFilter();
 
-       AlojamentoFilter AlojamentoFilter = readAlojamentoFilter();
+            String sDeFiltro = utilitarios.readLineFromConsole("String de filtro: ");
 
-        String sDeFiltro = utilitarios.readLineFromConsole("String de filtro: ");
+            List<Alojamento> listaAlojamento = controller.filtrar(AlojamentoFilter, sDeFiltro);
 
-        List<Alojamento> listaAlojamento = controller.filtrar(AlojamentoFilter, sDeFiltro);
-
-        System.out.println("\nLista de  Alojamento filtrada:\n");
+            System.out.println("\nLista de  Alojamento filtrada:\n");
         for (Alojamento ta : listaAlojamento) {
             System.out.println(ta.toString() + "\n");
-        }
 
         utilitarios.readLineFromConsole("Continuar?");
-        }
+        } }catch (Exception e){
+        System.out.println(e.getMessage());}
+}
+
+    @Override
+    public String getMenuDescription() {
+        return "Listar Alojamento\n";
+    }
+
     private AlojamentoFilter readAlojamentoFilter()
     {
         List<AlojamentoFilter> lstAlojamentoFilters = controller.getAlojamentoFilters();
@@ -56,6 +64,12 @@ public class UIListarAlojamento {
         while ( nIndex !=0 );
 
         return null;
+    }
+    // Codigo para gerar o controller
+    public ControllerListarAlojamento createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+        String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerListarAlojamento");
+        ControllerListarAlojamento controller=(ControllerListarAlojamento) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+        return controller;
     }
 }
 

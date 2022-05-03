@@ -1,24 +1,28 @@
 package ui;
 
+import controller.ControllerAlojamento;
 import controller.ControllerPacote;
 import domain.Alojamento;
 import domain.Atividade;
 import domain.Data;
 import domain.Organizacao;
+import org.apache.commons.configuration2.ex.ConfigurationException;
 import utils.utilitarios;
+
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UIPacote {
+public class UIPacote implements  UI{
     private Organizacao organizacao;
     private ControllerPacote controller;
 
-    public UIPacote(Organizacao organizacao) {
+    public UIPacote(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao = organizacao;
-        this.controller = new ControllerPacote(organizacao);
+        this.controller = createInstancesOfController();
     }
 
-    public void run() {
+    public void run(List<String> listStringController) {
         System.out.println("Novo Pacote");
         introduzDados(controller);
         if ((utilitarios.confirma("Confirma os Dados do tipo de Atividade [S|N]")))
@@ -27,6 +31,11 @@ public class UIPacote {
             System.out.println("Pacote não guardado");
         }
         apresentaDados();
+    }
+
+    @Override
+    public String getMenuDescription() {
+        return "Criar Pacote\n";
     }
 
     public void introduzDados(ControllerPacote controller) {
@@ -96,5 +105,11 @@ public class UIPacote {
                 list.add(x);
         }
         return list;
+    }
+    // Codigo para gerar o controller
+    public ControllerPacote createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+        String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerPacote");
+        ControllerPacote controller=(ControllerPacote) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+        return controller;
     }
 }

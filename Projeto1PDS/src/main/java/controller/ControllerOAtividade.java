@@ -2,7 +2,7 @@ package controller;
 
 import domain.*;
 
-public class ControllerOAtividade {
+public class ControllerOAtividade implements  ui.controllerInterface.iControllerOAtividade{
     private Atividade atividade;
     private Organizacao organizacao;
 

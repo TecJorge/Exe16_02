@@ -4,7 +4,7 @@ import domain.Organizacao;
 
 import java.util.List;
 
-public class ControllerListarAtividade {
+public class ControllerListarAtividade implements ui.controllerInterface.iControllerListarAtividade {
 
         private List tipoAtividadelist;
         private Organizacao organizacao;

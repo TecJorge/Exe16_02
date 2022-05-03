@@ -2,8 +2,8 @@ package domain;
 
 import domain.Factories.*;
 import domain.filters.AlojamentoFilter;
-import domain.filters.AlojamentoFilterNumerico;
 import domain.filters.TipoAlojamentoFilter;
+import ui.UI;
 
 import java.util.*;
 import java.util.List;
@@ -23,11 +23,12 @@ public class Organizacao {
     public FactoryTipoAlojamento factoryTipoAlojamento;
     private final List<TipoAlojamentoFilter> m_listaTipoAlojamentoFilters;
     private final List<AlojamentoFilter> m_listaAlojamentoFilters;
+    private final List<UI> m_listaClassUI;
     public FactoryAlojamentoFilters factoryAlojamentoFilters;
     public FactoryTipoAlojamentoFilter factoryTipoAlojamentoFilter;
 
 
-    public Organizacao(List<String> listaStringClassesTipoAlojamentoFilters, List<String> listaStringClassesAlojamentoFilters, FactoryTipoAlojamento factoryTipoAlojamento, FactoryTipoAtividade factoryTipoAtividade, FactoryAtividade factoryAtividade, FactoryAlojamento factoryAlojamento, FactoryLocal factoryLocal,FactoryPacote factoryPacote, FactoryTipoAlojamentoFilter factoryTipoAlojamentoFilter,FactoryAlojamentoFilters factoryAlojamentoFilters)
+    public Organizacao(List<String> listaStringClassesTipoAlojamentoFilters, List<String> listaStringClassesAlojamentoFilters, FactoryTipoAlojamento factoryTipoAlojamento, FactoryTipoAtividade factoryTipoAtividade, FactoryAtividade factoryAtividade, FactoryAlojamento factoryAlojamento, FactoryLocal factoryLocal,FactoryPacote factoryPacote, FactoryTipoAlojamentoFilter factoryTipoAlojamentoFilter,FactoryAlojamentoFilters factoryAlojamentoFilters,List<String> listaStrClassUi,List<String> listaStrInterfaceController)
     {   this.alojamentoList=new ArrayList<>();
         this.localList=new ArrayList<>();
         this.atividadeList=new ArrayList<>();
@@ -74,13 +75,14 @@ public class Organizacao {
             this.factoryTipoAlojamentoFilter=factoryTipoAlojamentoFilter;
         else
             throw new NullPointerException("A Factory TipoAlojamento Filters não pode ser null!");
-    }
-
-    private List<TipoAlojamentoFilter> createInstancesOfTipoAlojamentoFilters( List<String> listaStringClassesTipoAlojamentoFilters ) {
-        return factoryTipoAlojamentoFilter.createInstancesOfTipoAlojamentoFilters(listaStringClassesTipoAlojamentoFilters);
-    }
-    private List<AlojamentoFilter> createInstancesOfAlojamentoFilters(List<String> listaStringClassesAlojamentoFilters ) {
-    return factoryAlojamentoFilters.createInstancesOfAlojamentoFilters(listaStringClassesAlojamentoFilters);
+        if( listaStrClassUi!=null)
+            this.m_listaClassUI = createInstancesOfUI(listaStrClassUi );
+        else
+            throw new IllegalArgumentException("UI não pode ser null.");
+//        if( listaStrInterfaceController.isEmpty() )
+//            throw new IllegalArgumentException("Controller não pode ser null.");
+//        else
+//        this.m_listaController = createInstancesOfController(listaStrInterfaceController );
     }
 
     public List<TipoAlojamento> getAlojamentoList() {
@@ -195,5 +197,59 @@ public class Organizacao {
         }
         return listaFiltrada;
     }
+    public List<AlojamentoFilter> createInstancesOfAlojamentoFilters(List<String> listaStringAlojamentoFilters ) {
+
+        List<AlojamentoFilter> lAlojamentoFilters = new ArrayList<AlojamentoFilter>();
+
+        for (String strClassAlojamentoFilter : listaStringAlojamentoFilters) {
+            try {
+                AlojamentoFilter oAlojamentoFilter = (AlojamentoFilter) Class.forName(strClassAlojamentoFilter).getDeclaredConstructor().newInstance();
+                lAlojamentoFilters.add(oAlojamentoFilter);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return lAlojamentoFilters;
+}
+    public List<TipoAlojamentoFilter> createInstancesOfTipoAlojamentoFilters( List<String> listaStringClassesTipoAlojamentoFilters ) {
+
+        List<TipoAlojamentoFilter> lTipoAlojamentoFilters = new ArrayList<TipoAlojamentoFilter>();
+
+        for (String strClassTipoAlojamentoFilter : listaStringClassesTipoAlojamentoFilters) {
+            try {
+                TipoAlojamentoFilter oTipoAlojamentoFilter = (TipoAlojamentoFilter) Class.forName(strClassTipoAlojamentoFilter).getDeclaredConstructor().newInstance();
+                lTipoAlojamentoFilters.add(oTipoAlojamentoFilter);
+            }
+            catch(Exception e) {
+                System.out.println( e.getMessage() );
+            }
+        }
+        return  lTipoAlojamentoFilters;}
+    public List<UI> createInstancesOfUI(List<String> m_listaClassUI ) {
+
+        List<UI> lUI = new ArrayList<UI>();
+
+        for (String strClassUI : m_listaClassUI) {
+            try {
+                UI oUI = (UI) Class.forName(strClassUI).getDeclaredConstructor().newInstance();
+                lUI.add(oUI);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return lUI;}
+//        public List<Controller> createInstancesOfController( List<String> listaStrController ) {
+//
+//            List<Controller> lController = new ArrayList<Controller>();
+//
+//            for (String strController :listaStrController ) {
+//                try {
+//                    Controller controller = (Controller) Class.forName(strController).getDeclaredConstructor().newInstance();
+//                    lController.add(controller);
+//                } catch (Exception e) {
+//                    System.out.println(e.getMessage());
+//                }
+//            }
+//            return lController;}
 
 }

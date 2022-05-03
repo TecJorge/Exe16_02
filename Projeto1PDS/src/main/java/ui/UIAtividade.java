@@ -1,18 +1,22 @@
 package ui;
 
+import controller.ControllerAlojamento;
 import controller.ControllerAtividade;
-import controller.ControllerTipoAlojamento;
 import domain.Organizacao;
+import org.apache.commons.configuration2.ex.ConfigurationException;
 import utils.utilitarios;
 
-public class UIAtividade {
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+
+public class UIAtividade implements  UI {
     private Organizacao organizacao;
     private ControllerAtividade controller;
-    public UIAtividade(Organizacao organizacao){
+    public UIAtividade(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao=organizacao;
-        this.controller=new ControllerAtividade(organizacao);
+        this.controller=createInstancesOfController();
     }
-    public void run() {
+    public void run(List<String> listStringController) {
         System.out.println("Novo tipo de Atividade");
         introduzDados();
         if ((utilitarios.confirma("Confirma os Dados do tipo de Atividade [S|N]"))) {
@@ -25,6 +29,12 @@ public class UIAtividade {
             apresentaDados();
         }
     }
+
+    @Override
+    public String getMenuDescription() {
+        return "Criar Tipo de Atividade\n";
+    }
+
     public void introduzDados(){
         String desc=utilitarios.readLineFromConsole("Introduza os dados");
         controller.CriarTipoAtividade(desc);
@@ -32,5 +42,18 @@ public class UIAtividade {
     public void apresentaDados(){
         System.out.printf("Tipo de Atividade \n%s",controller.getTipoAtividade());
     }
-
+    // Codigo para gerar o controller
+    public ControllerAtividade createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+        try {
+            String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerAtividade");
+            ControllerAtividade controller = (ControllerAtividade) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+            return controller;
+        } catch (Exception e) {
+            System.out.println("Algo de mal não está certo");
+            System.out.println(e.fillInStackTrace());
+            System.out.println(e.getCause());
+        }finally {
+            return controller;
+        }
+    }
 }

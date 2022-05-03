@@ -8,7 +8,7 @@ import domain.filters.TipoAlojamentoFilter;
 
 import java.util.List;
 
-public class ControllerListarAlojamento {
+public class ControllerListarAlojamento implements ui.controllerInterface.iControllerListarAlojamento{
     private List Alojamentolist;
     private Organizacao organizacao;
     public ControllerListarAlojamento(Organizacao organizacao){
