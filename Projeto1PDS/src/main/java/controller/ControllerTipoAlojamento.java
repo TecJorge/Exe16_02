@@ -3,8 +3,9 @@ package controller;
 
 import domain.Organizacao;
 import domain.TipoAlojamento;
+import ui.controllerInterface.iControllerTipoAlojamento;
 
-public class ControllerTipoAlojamento implements ui.controllerInterface.iControllerTipoAlojamento {
+public class ControllerTipoAlojamento implements iControllerTipoAlojamento {
     private TipoAlojamento tipoAlojamento;
     private Organizacao organizacao;
 

@@ -16,4 +16,5 @@ public interface iControllerPacote {
     public ArrayList<Alojamento> getAlojamento();
     public ArrayList<Atividade> getAtividade();
 
+    boolean removerAtividadePacote(Atividade atividades_armazenados_até_ao_momento);
 }

@@ -7,6 +7,7 @@ import domain.Atividade;
 import domain.Data;
 import domain.Organizacao;
 import org.apache.commons.configuration2.ex.ConfigurationException;
+import ui.controllerInterface.iControllerPacote;
 import utils.utilitarios;
 
 import java.lang.reflect.InvocationTargetException;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class UIPacote implements  UI{
     private Organizacao organizacao;
-    private ControllerPacote controller;
+    private iControllerPacote controller;
 
     public UIPacote(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao = organizacao;
@@ -24,7 +25,7 @@ public class UIPacote implements  UI{
 
     public void run(List<String> listStringController) {
         System.out.println("Novo Pacote");
-        introduzDados(controller);
+        introduzDados();
         if ((utilitarios.confirma("Confirma os Dados do tipo de Atividade [S|N]")))
             System.out.println("Pacote Guardado");
         else {
@@ -38,7 +39,7 @@ public class UIPacote implements  UI{
         return "Criar Pacote\n";
     }
 
-    public void introduzDados(ControllerPacote controller) {
+    public void introduzDados() {
         boolean flag = false;
         String desc = utilitarios.readLineFromConsole("Introduza a descrição do Pacote");
         controller.CriarPacote(desc);
@@ -107,9 +108,9 @@ public class UIPacote implements  UI{
         return list;
     }
     // Codigo para gerar o controller
-    public ControllerPacote createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
-        String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerPacote");
-        ControllerPacote controller=(ControllerPacote) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+    public iControllerPacote createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+        String lController = utilitarios.readConfigString("controller.ControllerPacote");
+        iControllerPacote controller=(iControllerPacote) Class.forName(lController).getDeclaredConstructor().newInstance();
         return controller;
     }
 }

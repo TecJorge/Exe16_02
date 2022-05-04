@@ -1,17 +1,16 @@
 package ui;
 
-import controller.ControllerAlojamento;
-import controller.ControllerLocal;
 import domain.Organizacao;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import utils.utilitarios;
+import ui.controllerInterface.iControllerLocal;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class UiLocal implements UI {
     private Organizacao organizacao;
-    private ControllerLocal controller;
+    private iControllerLocal controller;
     public UiLocal(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao=organizacao;
         this.controller=createInstancesOfController();
@@ -42,9 +41,9 @@ public class UiLocal implements UI {
         System.out.printf("Local: \n%s",controller.getLocal());
     }
     // Codigo para gerar o controller
-    public ControllerLocal createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
-        String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerLocal");
-        ControllerLocal controller=(ControllerLocal) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+    public iControllerLocal createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+        String lController = utilitarios.readConfigString("controller.ControllerLocal");
+        iControllerLocal controller=(iControllerLocal) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
         return controller;
     }
 }

@@ -4,6 +4,7 @@ import controller.ControllerAlojamento;
 import controller.ControllerTipoAlojamento;
 import domain.Organizacao;
 import org.apache.commons.configuration2.ex.ConfigurationException;
+import ui.controllerInterface.iControllerTipoAlojamento;
 import utils.utilitarios;
 
 import java.lang.reflect.InvocationTargetException;
@@ -11,10 +12,10 @@ import java.util.List;
 
 public class UICriarTipoAlojamento implements  UI {
     private Organizacao organizacao;
-    private ControllerTipoAlojamento controller;
-    public UICriarTipoAlojamento(Organizacao organizacao){
+    private iControllerTipoAlojamento controller;
+    public UICriarTipoAlojamento(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao=organizacao;
-        this.controller=new ControllerTipoAlojamento(organizacao);
+        this.controller=createInstancesOfController();
     }
     public void run(List<String> listStringController) {
         System.out.println("Novo tipo de Alojamento");
@@ -43,9 +44,9 @@ public class UICriarTipoAlojamento implements  UI {
         System.out.printf("Tipo de Alojamento \n%s",controller.getTipoAlojamento());
     }
     // Codigo para gerar o controller
-    public ControllerTipoAlojamento createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
-        String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerTipoAlojamento");
-        ControllerTipoAlojamento controller=(ControllerTipoAlojamento) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+    public iControllerTipoAlojamento createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+        String lController = utilitarios.readConfigString("controller.ControllerTipoAlojamento");
+        iControllerTipoAlojamento controller=(iControllerTipoAlojamento) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
         return controller;
     }
 }

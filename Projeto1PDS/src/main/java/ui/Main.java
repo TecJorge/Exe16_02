@@ -45,7 +45,7 @@ public class Main {
            FactoryPacote factoryPacote=new FactoryPacote();
            FactoryTipoAlojamentoFilter factoryTipoAlojamentoFilters=new FactoryTipoAlojamentoFilter();
            FactoryAlojamentoFilters factoryAlojamentoFilters=new FactoryAlojamentoFilters();
-           Organizacao organizacao=new Organizacao(Arrays.asList(listStringClassesTipoAlojamentoFilters),Arrays.asList(listStringClassesAlojamentoFilters),factoryTipoAlojamento,factoryTipoAtividade,factoryAtividade,factoryAlojamento,factoryLocal,factoryPacote,factoryTipoAlojamentoFilters,factoryAlojamentoFilters, Arrays.asList(listStringUI),Arrays.asList(listControllers));
+           Organizacao organizacao=new Organizacao(Arrays.asList(listStringClassesTipoAlojamentoFilters),Arrays.asList(listStringClassesAlojamentoFilters),factoryTipoAlojamento,factoryTipoAtividade,factoryAtividade,factoryAlojamento,factoryLocal,factoryPacote,factoryTipoAlojamentoFilters,factoryAlojamentoFilters, Arrays.asList(listStringUI));
         MenuUI menuUI=new MenuUI(organizacao);
         menuUI.run(Arrays.asList(listStringUI),Arrays.asList(listControllers));
        }catch (IOException e){

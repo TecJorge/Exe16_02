@@ -4,12 +4,13 @@ import domain.Alojamento;
 import domain.Atividade;
 import domain.Organizacao;
 import domain.Pacote;
+import ui.controllerInterface.iControllerPacote;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ControllerPacote implements ui.controllerInterface.iControllerPacote{
+public class ControllerPacote implements iControllerPacote {
     private Pacote pacote;
     private Organizacao organizacao;
 

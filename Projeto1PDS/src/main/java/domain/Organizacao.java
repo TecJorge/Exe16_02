@@ -28,7 +28,7 @@ public class Organizacao {
     public FactoryTipoAlojamentoFilter factoryTipoAlojamentoFilter;
 
 
-    public Organizacao(List<String> listaStringClassesTipoAlojamentoFilters, List<String> listaStringClassesAlojamentoFilters, FactoryTipoAlojamento factoryTipoAlojamento, FactoryTipoAtividade factoryTipoAtividade, FactoryAtividade factoryAtividade, FactoryAlojamento factoryAlojamento, FactoryLocal factoryLocal,FactoryPacote factoryPacote, FactoryTipoAlojamentoFilter factoryTipoAlojamentoFilter,FactoryAlojamentoFilters factoryAlojamentoFilters,List<String> listaStrClassUi,List<String> listaStrInterfaceController)
+    public Organizacao(List<String> listaStringClassesTipoAlojamentoFilters, List<String> listaStringClassesAlojamentoFilters, FactoryTipoAlojamento factoryTipoAlojamento, FactoryTipoAtividade factoryTipoAtividade, FactoryAtividade factoryAtividade, FactoryAlojamento factoryAlojamento, FactoryLocal factoryLocal,FactoryPacote factoryPacote, FactoryTipoAlojamentoFilter factoryTipoAlojamentoFilter,FactoryAlojamentoFilters factoryAlojamentoFilters,List<String> listaStrClassUi)
     {   this.alojamentoList=new ArrayList<>();
         this.localList=new ArrayList<>();
         this.atividadeList=new ArrayList<>();
@@ -79,10 +79,6 @@ public class Organizacao {
             this.m_listaClassUI = createInstancesOfUI(listaStrClassUi );
         else
             throw new IllegalArgumentException("UI não pode ser null.");
-//        if( listaStrInterfaceController.isEmpty() )
-//            throw new IllegalArgumentException("Controller não pode ser null.");
-//        else
-//        this.m_listaController = createInstancesOfController(listaStrInterfaceController );
     }
 
     public List<TipoAlojamento> getAlojamentoList() {
@@ -238,18 +234,5 @@ public class Organizacao {
             }
         }
         return lUI;}
-//        public List<Controller> createInstancesOfController( List<String> listaStrController ) {
-//
-//            List<Controller> lController = new ArrayList<Controller>();
-//
-//            for (String strController :listaStrController ) {
-//                try {
-//                    Controller controller = (Controller) Class.forName(strController).getDeclaredConstructor().newInstance();
-//                    lController.add(controller);
-//                } catch (Exception e) {
-//                    System.out.println(e.getMessage());
-//                }
-//            }
-//            return lController;}
 
 }

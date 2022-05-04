@@ -2,8 +2,9 @@ package controller;
 
 import domain.Local;
 import domain.Organizacao;
+import ui.controllerInterface.iControllerLocal;
 
-public class ControllerLocal implements  ui.controllerInterface.iContollerLocal {
+public class ControllerLocal implements iControllerLocal {
     private Local local;
     private Organizacao organizacao;
 

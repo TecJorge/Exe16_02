@@ -15,7 +15,7 @@ import java.util.*;
 
 public class UIAlojamento implements UI {
     private Organizacao organizacao;
-     private ControllerAlojamento controller;
+     private iControllerAlojamento controller;
     public UIAlojamento(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao=organizacao;
         controller=createInstancesOfController();
@@ -73,9 +73,9 @@ public class UIAlojamento implements UI {
     }
 
     // Codigo para gerar o controller
-    public ControllerAlojamento createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
-        String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerAlojamento");
-        ControllerAlojamento controller=(ControllerAlojamento) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+    public iControllerAlojamento createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+        String lController = utilitarios.readConfigString("controller.ControllerAlojamento");
+        iControllerAlojamento controller=(iControllerAlojamento) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
         return controller;
     }
 }

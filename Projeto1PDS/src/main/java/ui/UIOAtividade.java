@@ -4,6 +4,7 @@ import controller.ControllerAlojamento;
 import controller.ControllerOAtividade;
 import domain.*;
 import org.apache.commons.configuration2.ex.ConfigurationException;
+import ui.controllerInterface.iControllerOAtividade;
 import utils.utilitarios;
 
 import java.lang.reflect.InvocationTargetException;
@@ -17,7 +18,7 @@ import java.util.Locale;
 
 public class UIOAtividade implements UI {
     private Organizacao organizacao;
-    private ControllerOAtividade controller;
+    private iControllerOAtividade controller;
     public UIOAtividade(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao=organizacao;
         this.controller=createInstancesOfController();
@@ -79,9 +80,9 @@ public class UIOAtividade implements UI {
         return dayOfWeeks;
     }
     // Codigo para gerar o controller
-    public ControllerOAtividade createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
-        String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerOAtividade");
-        ControllerOAtividade controller=(ControllerOAtividade) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+    public iControllerOAtividade createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+        String lController = utilitarios.readConfigString("controller.ControllerOAtividade");
+        iControllerOAtividade controller=(iControllerOAtividade) Class.forName(lController).getDeclaredConstructor(ControllerOAtividade.class).newInstance(this.organizacao);
         return controller;
     }
 }

@@ -4,6 +4,7 @@ import controller.ControllerAlojamento;
 import controller.ControllerAtividade;
 import domain.Organizacao;
 import org.apache.commons.configuration2.ex.ConfigurationException;
+import ui.controllerInterface.iControllerAtividade;
 import utils.utilitarios;
 
 import java.lang.reflect.InvocationTargetException;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class UIAtividade implements  UI {
     private Organizacao organizacao;
-    private ControllerAtividade controller;
+    private iControllerAtividade controller;
     public UIAtividade(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao=organizacao;
         this.controller=createInstancesOfController();
@@ -43,10 +44,10 @@ public class UIAtividade implements  UI {
         System.out.printf("Tipo de Atividade \n%s",controller.getTipoAtividade());
     }
     // Codigo para gerar o controller
-    public ControllerAtividade createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+    public iControllerAtividade createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
         try {
-            String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerAtividade");
-            ControllerAtividade controller = (ControllerAtividade) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+            String lController = utilitarios.readConfigString("controller.ControllerAtividade");
+            iControllerAtividade controller = (iControllerAtividade) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
             return controller;
         } catch (Exception e) {
             System.out.println("Algo de mal não está certo");

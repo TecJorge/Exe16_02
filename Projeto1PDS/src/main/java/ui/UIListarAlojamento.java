@@ -6,6 +6,7 @@ import domain.Alojamento;
 import domain.Organizacao;
 import domain.filters.AlojamentoFilter;
 import org.apache.commons.configuration2.ex.ConfigurationException;
+import ui.controllerInterface.iControllerListarAlojamento;
 import utils.utilitarios;
 
 import java.lang.reflect.InvocationTargetException;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class UIListarAlojamento implements UI {
     private Organizacao organizacao;
-    private ControllerListarAlojamento controller;
+    private iControllerListarAlojamento controller;
     public UIListarAlojamento(Organizacao organizacao) throws ConfigurationException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.organizacao=organizacao;
         this.controller=createInstancesOfController();
@@ -66,9 +67,9 @@ public class UIListarAlojamento implements UI {
         return null;
     }
     // Codigo para gerar o controller
-    public ControllerListarAlojamento createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
-        String lController = utilitarios.readConfigString("ui.controllerInterface.iControllerListarAlojamento");
-        ControllerListarAlojamento controller=(ControllerListarAlojamento) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
+    public iControllerListarAlojamento createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
+        String lController = utilitarios.readConfigString("controller.ControllerListarAlojamento");
+        iControllerListarAlojamento controller=(iControllerListarAlojamento) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
         return controller;
     }
 }
