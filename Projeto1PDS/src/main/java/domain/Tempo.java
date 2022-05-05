@@ -51,6 +51,12 @@ public class Tempo implements Comparable<Tempo> {
         this.minutos = minutos;
         this.segundos = segundos;
     }
+    public Tempo(String tempo){
+        String[] horas=tempo.split(":");
+        this.horas=Integer.valueOf(horas[0]);
+        this.minutos=Integer.valueOf(horas[1]);
+        this.segundos=Integer.valueOf(horas[2]);
+    }
 
     /**
      * Constr?i uma inst?ncia de Tempo recebendo as horas e os minutos e 

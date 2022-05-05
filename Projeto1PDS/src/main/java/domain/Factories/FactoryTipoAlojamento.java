@@ -1,9 +1,10 @@
 package domain.Factories;
 
+import domain.DTO.Dto_TipoAlojamento;
 import domain.TipoAlojamento;
 
 public class FactoryTipoAlojamento {
-    public TipoAlojamento criaTipoAlojamento(String descricao){
-        return new TipoAlojamento(descricao);
+    public Dto_TipoAlojamento criaTipoAlojamento(String descricao){
+        return new Dto_TipoAlojamento(descricao);
     }
 }

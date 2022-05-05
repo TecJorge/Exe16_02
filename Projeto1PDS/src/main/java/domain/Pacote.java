@@ -1,5 +1,7 @@
 package domain;
 
+import domain.DTO.Dto_Pacote;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,12 @@ public class Pacote {
         this.listaAlojamento=new ArrayList<>();
         this.listaAtividades=new ArrayList<>();
         this.preco=0;
+    }
+    public Pacote(Dto_Pacote dto_pacote){
+        this.descricao=dto_pacote.getdescricao;
+        this.listaAlojamento=dto_pacote.getListaAlojamento;
+        this.listaAtividades=dto_pacote.getListaAtividade;
+        this.preco=dto_pacote.getPreco;
     }
 
     public String getDescricao() {

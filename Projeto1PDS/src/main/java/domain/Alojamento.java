@@ -1,6 +1,7 @@
 package domain;
 
 
+import domain.DTO.Dto_Alojamento;
 import javafx.util.converter.LocalDateStringConverter;
 
 import java.time.LocalDate;
@@ -22,6 +23,15 @@ public class Alojamento {
         this.preco=preco;
         this.data=data;
 
+    }
+    public Alojamento(Dto_Alojamento dto_alojamento){
+        this.denominacao=dto_alojamento.getDenominacao();
+        this.qntdMin=dto_alojamento.getQntdMin();
+        this.qntdMax= dto_alojamento.getQntdMax();
+        this.preco=dto_alojamento.getPreco();
+        this.data=CreateDataFromString(dto_alojamento.getsData());
+        this.tipoAlojamento=new TipoAlojamento(dto_alojamento.getsTipoAlojamento());
+        this.local=new Local(dto_alojamento.getsLocal());
     }
 
     public double getPreco() {
@@ -55,5 +65,10 @@ public class Alojamento {
     @Override
     public String toString() {
        return String.format("Designação:%s\n%s\n%s\nDia da Semana:%s\nQuantidade Minima Pessoas %d\nQuantidade Máxima Pessoas %d\nPreço:%.2f EUR",denominacao, tipoAlojamento,local,data.sDiaSemana(),qntdMin,qntdMax,preco);
+    }
+    private Data CreateDataFromString(String data){
+        Data retorno=new Data();
+        retorno.setDiaSemanaFromString(data);
+        return retorno;
     }
 }

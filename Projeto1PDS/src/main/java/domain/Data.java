@@ -55,6 +55,9 @@ public class Data {
     public void setDiaSemana(DayOfWeek diaSemana) {
         this.diaSemana = diaSemana;
     }
+    public DayOfWeek setDiaSemanaFromString(String diaSemana){
+        return this.diaSemana=StringToDayOfWeek(diaSemana);
+    }
 
     @Override
     public String toString() {
@@ -85,9 +88,13 @@ public class Data {
         LocalDate dt=LocalDate.of(ano,Month.valueOf(sMes),dia);
 
         return DayOfWeek.from(dt).toString();
+    }
+    private DayOfWeek StringToDayOfWeek(String dayofweek){
+        DayOfWeek diaSemana;
 
+        diaSemana=DayOfWeek.valueOf(dayofweek);
 
-
-
-}}
+        return diaSemana;
+    }
+}
 

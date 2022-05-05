@@ -1,6 +1,10 @@
 package domain;
 
+import domain.DTO.Dto_Local;
+
 import java.util.Objects;
+
+import static org.apache.commons.lang3.StringUtils.split;
 
 public class Local {
     private String cid,pais;
@@ -8,6 +12,16 @@ public class Local {
     public Local(String cid,String pais){
         this.cid=cid;
         this.pais=pais;
+    }
+    public Local(String local){
+        String [] Stemp=local.split(":");
+        String[] sFinal=Stemp.toString().split(",");
+        this.cid=sFinal[0];
+        this.pais=sFinal[1];
+    }
+    public Local (Dto_Local local){
+        this.cid=local.getCid();
+        this.pais=local.getPais();
     }
     Local(){
         this.cid=cidDefault;
@@ -19,6 +33,10 @@ public class Local {
 
     public String getCid() {
         return cid;
+    }
+
+    public String getPais() {
+        return pais;
     }
 
     @Override

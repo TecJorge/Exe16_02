@@ -110,7 +110,7 @@ public class UIPacote implements  UI{
     // Codigo para gerar o controller
     public iControllerPacote createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
         String lController = utilitarios.readConfigString("controller.ControllerPacote");
-        iControllerPacote controller=(iControllerPacote) Class.forName(lController).getDeclaredConstructor().newInstance();
+        iControllerPacote controller=(iControllerPacote) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
         return controller;
     }
 }

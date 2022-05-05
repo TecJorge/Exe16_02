@@ -82,7 +82,7 @@ public class UIOAtividade implements UI {
     // Codigo para gerar o controller
     public iControllerOAtividade createInstancesOfController() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ConfigurationException {
         String lController = utilitarios.readConfigString("controller.ControllerOAtividade");
-        iControllerOAtividade controller=(iControllerOAtividade) Class.forName(lController).getDeclaredConstructor(ControllerOAtividade.class).newInstance(this.organizacao);
+        iControllerOAtividade controller=(iControllerOAtividade) Class.forName(lController).getDeclaredConstructor(Organizacao.class).newInstance(this.organizacao);
         return controller;
     }
 }

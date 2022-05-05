@@ -1,5 +1,7 @@
 package domain;
 
+import domain.DTO.Dto_TipoAlojamento;
+
 import java.util.Objects;
 
 public class TipoAlojamento {
@@ -10,6 +12,9 @@ public class TipoAlojamento {
     }
     public TipoAlojamento(){
         this.descricao=descricaoDefault;
+    }
+    public TipoAlojamento(Dto_TipoAlojamento dto_tipoAlojamento){
+        this.descricao=dto_tipoAlojamento.getsDtoDescricao();
     }
 
     public void setDescricao(String descricao) {
