@@ -1,0 +1,224 @@
+@startuml
+
+title __DTO's Class Diagram__\n
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.AddressDTO {
+          ~ city : String
+          ~ countryCode : String
+          ~ postalCode : String
+          ~ street : String
+          + AddressDTO()
+          + equals()
+          + getCity()
+          + getCountryCode()
+          + getPostalCode()
+          + getStreet()
+          + hashCode()
+          + toString()
+          # canEqual()
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.GroupDTO {
+          ~ name : String
+          + GroupDTO()
+          + equals()
+          + getId()
+          + getName()
+          + hashCode()
+          + toString()
+          # canEqual()
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.JwtResponse {
+          ~ email : String
+          ~ roles : List<String>
+          ~ token : String
+          ~ username : String
+          + JwtResponse()
+          + equals()
+          + getEmail()
+          + getId()
+          + getRoles()
+          + getToken()
+          + getUsername()
+          + hashCode()
+          + setEmail()
+          + setId()
+          + setRoles()
+          + setToken()
+          + setUsername()
+          + toString()
+          # canEqual()
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.LoginRequest {
+          ~ password : String
+          ~ username : String
+          + LoginRequest()
+          + equals()
+          + getPassword()
+          + getUsername()
+          + hashCode()
+          + toString()
+          # canEqual()
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.MessageResponse {
+          ~ message : String
+          + MessageResponse()
+          + equals()
+          + getMessage()
+          + hashCode()
+          + toString()
+          # canEqual()
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.NewAddressInfoDTO {
+          ~ birthPlace : String
+          ~ city : String
+          ~ country : String
+          ~ postalCode : String
+          ~ street : String
+          + NewAddressInfoDTO()
+          + equals()
+          + getBirthPlace()
+          + getCity()
+          + getCountry()
+          + getPostalCode()
+          + getStreet()
+          + hashCode()
+          + setBirthPlace()
+          + setCity()
+          + setCountry()
+          + setPostalCode()
+          + setStreet()
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.NewCountryInfoDTO {
+          ~ code : String
+          ~ name : String
+          + NewCountryInfoDTO()
+          + equals()
+          + getCode()
+          + getName()
+          + hashCode()
+          + setCode()
+          + setName()
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.PersonDTO {
+          ~ firstName : String
+          ~ lastName : String
+          + PersonDTO()
+          + equals()
+          + getFirstName()
+          + getId()
+          + getLastName()
+          + hashCode()
+          + toString()
+          # canEqual()
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.RoleDTO {
+          ~ name : String
+          + RoleDTO()
+          + equals()
+          + getId()
+          + getName()
+          + hashCode()
+          + toString()
+          # canEqual()
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.SignupRequest {
+          ~ email : String
+          ~ firstName : String
+          ~ id : long
+          ~ lastName : String
+          ~ password : String
+          ~ username : String
+          + SignupRequest()
+          + equals()
+          + getEmail()
+          + getFirstName()
+          + getId()
+          + getLastName()
+          + getPassword()
+          + getUsername()
+          + hashCode()
+          + toString()
+          # canEqual()
+      }
+    }
+  }
+  
+
+  com.example.demo.DTO.AddressDTO -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.GroupDTO -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.GroupDTO o-- com.example.demo.domain.valueobjects.GroupId : id
+  com.example.demo.DTO.JwtResponse -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.JwtResponse o-- com.example.demo.domain.valueobjects.PersonId : id
+  com.example.demo.DTO.LoginRequest -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.MessageResponse -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.PersonDTO -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.PersonDTO o-- com.example.demo.domain.valueobjects.PersonId : id
+  com.example.demo.DTO.RoleDTO -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.RoleDTO o-- com.example.demo.domain.valueobjects.RoleId : id
+  com.example.demo.DTO.SignupRequest -up-|> org.springframework.hateoas.RepresentationModel
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
