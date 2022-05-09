@@ -1,0 +1,637 @@
+@startuml
+
+title __DEMO's Class Diagram__\n
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.AddressDTO {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.GroupDTO {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.JwtResponse {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.LoginRequest {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.MessageResponse {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.NewAddressInfoDTO {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.NewCountryInfoDTO {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.PersonDTO {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.RoleDTO {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      class com.example.demo.DTO.SignupRequest {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      namespace assemblers {
+        class com.example.demo.DTO.assemblers.AddressDomainDTOAssembler {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      namespace assemblers {
+        class com.example.demo.DTO.assemblers.GroupDomainDTOAssembler {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace DTO {
+      namespace assemblers {
+        class com.example.demo.DTO.assemblers.PersonDomainDTOAssembler {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    class com.example.demo.DemoApplication {
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace controllers {
+      class com.example.demo.controllers.AuthController {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace controllers {
+      class com.example.demo.controllers.CountryController {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace controllers {
+      class com.example.demo.controllers.CreateAddressController {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace datamodel {
+      class com.example.demo.datamodel.AddressConverter {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace datamodel {
+      class com.example.demo.datamodel.AddressJpa {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace datamodel {
+      class com.example.demo.datamodel.AdminJpa {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace datamodel {
+      class com.example.demo.datamodel.CountryJpa {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace datamodel {
+      class com.example.demo.datamodel.GroupJpa {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace datamodel {
+      class com.example.demo.datamodel.PersonJpa {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace datamodel {
+      class com.example.demo.datamodel.RoleJpa {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace datamodel {
+      namespace assemblers {
+        class com.example.demo.datamodel.assemblers.CountryDomainDataAssembler {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace datamodel {
+      namespace assemblers {
+        class com.example.demo.datamodel.assemblers.GroupDomainDataAssembler {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace datamodel {
+      namespace assemblers {
+        class com.example.demo.datamodel.assemblers.PersonDomainDataAssembler {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace datamodel {
+      namespace assemblers {
+        class com.example.demo.datamodel.assemblers.RoleDomainDataAssembler {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace entities {
+        class com.example.demo.domain.entities.Address {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace entities {
+        class com.example.demo.domain.entities.Country {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace entities {
+        class com.example.demo.domain.entities.Group {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace entities {
+        class com.example.demo.domain.entities.Person {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace entities {
+        class com.example.demo.domain.entities.Role {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace factories {
+        class com.example.demo.domain.factories.CountryFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace factories {
+        interface com.example.demo.domain.factories.ICountryFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace valueobjects {
+        enum ERole {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace valueobjects {
+        interface com.example.demo.domain.valueobjects.EntityId {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace valueobjects {
+        class com.example.demo.domain.valueobjects.GroupId {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace valueobjects {
+        class com.example.demo.domain.valueobjects.LedgerId {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace valueobjects {
+        class com.example.demo.domain.valueobjects.PersonId {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace domain {
+      namespace valueobjects {
+        class com.example.demo.domain.valueobjects.RoleId {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace repositories {
+      class com.example.demo.repositories.AddressRepository {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace repositories {
+      class com.example.demo.repositories.CountryRepository {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace repositories {
+      class com.example.demo.repositories.GroupRepository {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace repositories {
+      class com.example.demo.repositories.PersonRepository {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace repositories {
+      class com.example.demo.repositories.RoleRepository {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace repositories {
+      namespace jpa {
+        interface com.example.demo.repositories.jpa.AddressJpaRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace repositories {
+      namespace jpa {
+        interface com.example.demo.repositories.jpa.AdminJpaRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace repositories {
+      namespace jpa {
+        interface com.example.demo.repositories.jpa.CountryJpaRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace repositories {
+      namespace jpa {
+        interface com.example.demo.repositories.jpa.GroupJpaRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace repositories {
+      namespace jpa {
+        interface com.example.demo.repositories.jpa.PersonJpaRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace repositories {
+      namespace jpa {
+        interface com.example.demo.repositories.jpa.RoleJpaRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace security {
+      class com.example.demo.security.WebSecurityConfig {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace security {
+      namespace jwt {
+        class com.example.demo.security.jwt.AuthEntryPointJwt {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace security {
+      namespace jwt {
+        class com.example.demo.security.jwt.AuthTokenFilter {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace security {
+      namespace jwt {
+        class com.example.demo.security.jwt.JwtUtils {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace security {
+      namespace services {
+        class com.example.demo.security.services.UserDetailsImpl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace security {
+      namespace services {
+        class com.example.demo.security.services.UserDetailsServiceImpl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace services {
+      class com.example.demo.services.CountryService {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace services {
+      class com.example.demo.services.GroupService {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace services {
+      class com.example.demo.services.PersonService {
+      }
+    }
+  }
+  
+
+  namespace com.example.demo {
+    namespace services {
+      class com.example.demo.services.RoleService {
+      }
+    }
+  }
+  
+
+  com.example.demo.DTO.AddressDTO -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.GroupDTO -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.GroupDTO o-- com.example.demo.domain.valueobjects.GroupId : id
+  com.example.demo.DTO.JwtResponse -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.JwtResponse o-- com.example.demo.domain.valueobjects.PersonId : id
+  com.example.demo.DTO.LoginRequest -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.MessageResponse -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.PersonDTO -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.PersonDTO o-- com.example.demo.domain.valueobjects.PersonId : id
+  com.example.demo.DTO.RoleDTO -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.DTO.RoleDTO o-- com.example.demo.domain.valueobjects.RoleId : id
+  com.example.demo.DTO.SignupRequest -up-|> org.springframework.hateoas.RepresentationModel
+  com.example.demo.controllers.AuthController o-- com.example.demo.security.jwt.JwtUtils : jwtUtils
+  com.example.demo.controllers.AuthController o-- com.example.demo.repositories.PersonRepository : personRepository
+  com.example.demo.controllers.AuthController o-- com.example.demo.repositories.RoleRepository : roleRepository
+  com.example.demo.controllers.CountryController o-- com.example.demo.services.CountryService : service
+  com.example.demo.controllers.CreateAddressController o-- com.example.demo.services.PersonService : service
+  com.example.demo.datamodel.AddressConverter .up.|> javax.persistence.AttributeConverter
+  com.example.demo.datamodel.AddressJpa o-- com.example.demo.datamodel.PersonJpa : person
+  com.example.demo.datamodel.AdminJpa o-- com.example.demo.datamodel.AdminJpa.GroupPersonIdJpa : id
+  com.example.demo.datamodel.GroupJpa o-- com.example.demo.domain.valueobjects.GroupId : id
+  com.example.demo.datamodel.PersonJpa o-- com.example.demo.domain.valueobjects.PersonId : id
+  com.example.demo.datamodel.RoleJpa o-- com.example.demo.domain.valueobjects.RoleId : id
+  com.example.demo.datamodel.RoleJpa o-- com.example.demo.domain.valueobjects.ERole : name
+  com.example.demo.domain.entities.Group o-- com.example.demo.domain.valueobjects.GroupId : id
+  com.example.demo.domain.entities.Person o-- com.example.demo.domain.valueobjects.PersonId : id
+  com.example.demo.domain.entities.Role o-- com.example.demo.domain.valueobjects.RoleId : id
+  com.example.demo.domain.entities.Role o-- com.example.demo.domain.valueobjects.ERole : name
+  com.example.demo.domain.factories.CountryFactory .up.|> com.example.demo.domain.factories.ICountryFactory
+  com.example.demo.domain.valueobjects.GroupId .up.|> com.example.demo.domain.valueobjects.EntityId
+  com.example.demo.domain.valueobjects.GroupId .up.|> java.io.Serializable
+  com.example.demo.domain.valueobjects.PersonId .up.|> com.example.demo.domain.valueobjects.EntityId
+  com.example.demo.domain.valueobjects.PersonId .up.|> java.io.Serializable
+  com.example.demo.domain.valueobjects.RoleId .up.|> com.example.demo.domain.valueobjects.EntityId
+  com.example.demo.domain.valueobjects.RoleId .up.|> java.io.Serializable
+  com.example.demo.repositories.AddressRepository o-- com.example.demo.datamodel.assemblers.PersonDomainDataAssembler : addressAssembler
+  com.example.demo.repositories.AddressRepository o-- com.example.demo.repositories.jpa.AddressJpaRepository : addressJpaRepository
+  com.example.demo.repositories.CountryRepository o-- com.example.demo.datamodel.assemblers.CountryDomainDataAssembler : countryAssembler
+  com.example.demo.repositories.CountryRepository o-- com.example.demo.repositories.jpa.CountryJpaRepository : countryJpaRepository
+  com.example.demo.repositories.GroupRepository o-- com.example.demo.repositories.jpa.AdminJpaRepository : adminJpaRepository
+  com.example.demo.repositories.GroupRepository o-- com.example.demo.datamodel.assemblers.GroupDomainDataAssembler : groupAssembler
+  com.example.demo.repositories.GroupRepository o-- com.example.demo.repositories.jpa.GroupJpaRepository : groupJpaRepository
+  com.example.demo.repositories.PersonRepository o-- com.example.demo.repositories.jpa.AddressJpaRepository : addressJpaRepository
+  com.example.demo.repositories.PersonRepository o-- com.example.demo.datamodel.assemblers.PersonDomainDataAssembler : personAssembler
+  com.example.demo.repositories.PersonRepository o-- com.example.demo.repositories.jpa.PersonJpaRepository : personJpaRepository
+  com.example.demo.repositories.RoleRepository o-- com.example.demo.datamodel.assemblers.RoleDomainDataAssembler : roleAssembler
+  com.example.demo.repositories.RoleRepository o-- com.example.demo.repositories.jpa.RoleJpaRepository : roleJpaRepository
+  com.example.demo.security.WebSecurityConfig -up-|> org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+  com.example.demo.security.WebSecurityConfig o-- com.example.demo.security.services.UserDetailsServiceImpl : userDetailsService
+  com.example.demo.security.WebSecurityConfig o-- com.example.demo.security.jwt.AuthEntryPointJwt : unauthorizedHandler
+  com.example.demo.security.jwt.AuthEntryPointJwt .up.|> org.springframework.security.web.AuthenticationEntryPoint
+  com.example.demo.security.jwt.AuthTokenFilter -up-|> org.springframework.web.filter.OncePerRequestFilter
+  com.example.demo.security.jwt.AuthTokenFilter o-- com.example.demo.security.jwt.JwtUtils : jwtUtils
+  com.example.demo.security.jwt.AuthTokenFilter o-- com.example.demo.security.services.UserDetailsServiceImpl : userDetailsService
+  com.example.demo.security.services.UserDetailsImpl .up.|> org.springframework.security.core.userdetails.UserDetails
+  com.example.demo.security.services.UserDetailsImpl o-- com.example.demo.domain.valueobjects.PersonId : id
+  com.example.demo.security.services.UserDetailsServiceImpl .up.|> org.springframework.security.core.userdetails.UserDetailsService
+  com.example.demo.security.services.UserDetailsServiceImpl o-- com.example.demo.repositories.PersonRepository : userRepository
+  com.example.demo.services.CountryService o-- com.example.demo.domain.factories.ICountryFactory : countryFactory
+  com.example.demo.services.CountryService o-- com.example.demo.repositories.CountryRepository : countryRepository
+  com.example.demo.services.GroupService o-- com.example.demo.DTO.assemblers.GroupDomainDTOAssembler : groupAssembler
+  com.example.demo.services.GroupService o-- com.example.demo.repositories.GroupRepository : groupRepository
+  com.example.demo.services.GroupService o-- com.example.demo.repositories.PersonRepository : personRepository
+  com.example.demo.services.PersonService o-- com.example.demo.repositories.CountryRepository : countryRepository
+  com.example.demo.services.PersonService o-- com.example.demo.DTO.assemblers.PersonDomainDTOAssembler : personAssembler
+  com.example.demo.services.PersonService o-- com.example.demo.repositories.PersonRepository : personRepository
+  com.example.demo.services.RoleService o-- com.example.demo.repositories.RoleRepository : roleRepository
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
