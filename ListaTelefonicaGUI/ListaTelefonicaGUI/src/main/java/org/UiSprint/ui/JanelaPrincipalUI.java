@@ -1,8 +1,5 @@
-package org.upskill.listatelefonica.ui;
+package org.UiSprint.ui;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +12,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
-import org.upskill.listatelefonica.controller.AplicacaoController;
+import org.UiSprint.controller.AplicacaoController;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class JanelaPrincipalUI implements Initializable {
     private AplicacaoController appController;
@@ -27,14 +28,14 @@ public class JanelaPrincipalUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AdicionarNovoContactoScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AdicionarNovoAnoLetivo.fxml"));
             Parent root = loader.load();
             
             Scene scene = new Scene(root);
             
             novoContactoStage = new Stage();
             novoContactoStage.initModality(Modality.APPLICATION_MODAL);
-            novoContactoStage.setTitle("Novo Contacto");
+            novoContactoStage.setTitle("Novo Ano Letivo");
             novoContactoStage.setResizable(false);
             novoContactoStage.setScene(scene);
             
@@ -42,7 +43,7 @@ public class JanelaPrincipalUI implements Initializable {
             appController.preencherListaTelefonica();
             atualizaTextAreaListaTelefonica();
             
-            AdicionarNovoContactoUI novoContactoUI = loader.getController();
+            AdicionarNovoAnoLetivoUI novoContactoUI = loader.getController();
             novoContactoUI.associarParentUI(this);
         } catch (IOException ex) {
             AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, "Erro.", ex.getMessage());

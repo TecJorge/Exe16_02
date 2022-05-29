@@ -6,13 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ListaTelefonicaGUI" />
+        <module name="SprintUI" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="ListaTelefonicaGUI" options="-bootclasspath /Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/jre/classes:/Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/jre/lib/jfxrt.jar" />
+      <module name="SprintUI" options="-bootclasspath C:\Users\Ciber\.jdks\corretto-1.8.0_322\jre\lib\resources.jar;C:\Users\Ciber\.jdks\corretto-1.8.0_322\jre\lib\rt.jar;C:\Users\Ciber\.jdks\corretto-1.8.0_322\jre\lib\sunrsasign.jar;C:\Users\Ciber\.jdks\corretto-1.8.0_322\jre\lib\jsse.jar;C:\Users\Ciber\.jdks\corretto-1.8.0_322\jre\lib\jce.jar;C:\Users\Ciber\.jdks\corretto-1.8.0_322\jre\lib\charsets.jar;C:\Users\Ciber\.jdks\corretto-1.8.0_322\jre\lib\jfr.jar;C:\Users\Ciber\.jdks\corretto-1.8.0_322\jre\classes;$USER_HOME$/.jdks/corretto-1.8.0_322/jre/lib/jfxrt.jar" />
     </option>
   </component>
 </project>

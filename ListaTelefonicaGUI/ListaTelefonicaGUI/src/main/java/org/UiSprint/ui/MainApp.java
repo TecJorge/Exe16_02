@@ -1,8 +1,6 @@
-package org.upskill.listatelefonica.ui;
+package org.UiSprint.ui;
 
-import java.io.IOException;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,8 +10,10 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.IOException;
+
 public class MainApp extends Application {
-    public static final String TITULO_APLICACAO = "Lista Telefónica";
+    public static final String TITULO_APLICACAO = "Proposta de Projeto";
 
     @Override
     public void start(Stage stage) {
@@ -45,14 +45,6 @@ public class MainApp extends Application {
         }
     }
 
-    /**
-     * The main() method is ignored in correctly deployed JavaFX application.
-     * main() serves only as fallback in case the application can not be
-     * launched through deployment artifacts, e.g., in IDEs with limited FX
-     * support. NetBeans ignores main().
-     *
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }

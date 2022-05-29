@@ -1,4 +1,4 @@
-package org.upskill.listatelefonica.model;
+package org.UiSprint.model;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,23 +1,24 @@
-package org.upskill.listatelefonica.ui;
+package org.UiSprint.ui;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import org.upskill.listatelefonica.controller.AplicacaoController;
+import org.UiSprint.controller.AplicacaoController;
 
-public class AdicionarNovoContactoUI implements Initializable {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AdicionarNovoAnoLetivoUI implements Initializable {
     private JanelaPrincipalUI janelaPrincipalUI;
 
     @FXML
-    private TextField txtNome;
+    private TextField txtAnoLetivoInicial;
     
     @FXML
-    private TextField txtTelefone;
+    private TextField txtAnoLetivoFinal;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -32,18 +33,16 @@ public class AdicionarNovoContactoUI implements Initializable {
         try {
             AplicacaoController appController = janelaPrincipalUI.getAplicacaoController();
             
-            boolean adicionou = appController.adicionarContactoTelefonico(
-                                    txtNome.getText().trim(),
-                                    Integer.parseInt(txtTelefone.getText()));
+            boolean adicionou = appController.addAnoLetivo(Integer.valueOf(txtAnoLetivoInicial.getText()), Integer.valueOf(txtAnoLetivoFinal.getText()));
             if (adicionou) {
                 janelaPrincipalUI.atualizaTextAreaListaTelefonica();
             }
             
-            AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, "Adicionar novo contacto.",
-                    adicionou ? "Contacto adicionado com sucesso."
-                    : "Não foi possível adicionar o contacto.").show();
+            AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, "Adicionar novo A Letivo.",
+                    adicionou ? "Ano Letivo adicionado com sucesso."
+                    : "Não foi adicionar o Ano Letivo ao sistema").show();
 
-            encerrarNovoContactoUI(event);
+            encerrarNovoAnoLetivoUI(event);
         } catch (NumberFormatException nfe) {
             AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, "Erro nos dados.",
                     "Introduza um valor numérico para telefone!").show();
@@ -55,12 +54,12 @@ public class AdicionarNovoContactoUI implements Initializable {
 
     @FXML
     private void btnCancelarAction(ActionEvent event) {
-        encerrarNovoContactoUI(event);
+        encerrarNovoAnoLetivoUI(event);
     }
 
-    private void encerrarNovoContactoUI(ActionEvent event) {
-        this.txtNome.clear();
-        this.txtTelefone.clear();
+    private void encerrarNovoAnoLetivoUI(ActionEvent event) {
+        this.txtAnoLetivoFinal.clear();
+        this.txtAnoLetivoInicial.clear();
         
         ((Node) event.getSource()).getScene().getWindow().hide();
     }

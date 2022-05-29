@@ -1,4 +1,4 @@
-package org.upskill.listatelefonica.model;
+package org.UiSprint.model;
 
 public class ContactoTelefonico implements Comparable<ContactoTelefonico> {
     private String titular;

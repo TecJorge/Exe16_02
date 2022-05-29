@@ -1,9 +1,11 @@
-package org.upskill.listatelefonica.controller;
+package org.UiSprint.controller;
 
-import org.upskill.listatelefonica.model.ListaTelefonica;
+import org.UiSprint.Services.AnoLetivoService;
+import org.UiSprint.model.ListaTelefonica;
 
 public class AplicacaoController {
     private ListaTelefonica listaTelefonica;
+    private AnoLetivoService anoLetivoService=new AnoLetivoService();
 
     public AplicacaoController() {
         listaTelefonica = new ListaTelefonica();
@@ -17,7 +19,7 @@ public class AplicacaoController {
         listaTelefonica.prePreencherLista();
     }
 
-    public boolean adicionarContactoTelefonico(String titular, int numero) {
-        return listaTelefonica.adicionarContactoTelefonico(titular, numero);
+    public boolean addAnoLetivo(int anoInicial, int anoFinal) {
+        return anoLetivoService.addAnoLetivo(anoInicial,anoFinal);
     }
 }
