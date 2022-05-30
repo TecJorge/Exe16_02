@@ -1,7 +1,7 @@
 package org.UiSprint.Factory;
 
-import org.UiSprint.model.NewLocalInfoDTO;
+import org.UiSprint.model.NewAnoLetivoDTO;
 
 public interface iAnoLetivoFactory {
-    public NewLocalInfoDTO NewAnoletivo(int anoInicial, int anoFinal);
+    public NewAnoLetivoDTO NewAnoletivo(int pais, int cidade);
 }

@@ -5,34 +5,33 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.IOException;
 @JsonSerialize
-public class NewLocalInfoDTO {
+public class NewAnoLetivoDTO {
     private int pais;
     private int cidade;
-    protected NewLocalInfoDTO(){}
-    public NewLocalInfoDTO(int pais , int cidade){
-       setAnoInicial(pais);
-       setAnoFinal(cidade);
+    protected NewAnoLetivoDTO(){}
+    public NewAnoLetivoDTO(int pais , int cidade){
+       setPais(pais);
+       setCidade(cidade);
     }
 
-    public void setAnoInicial(int pais) {
+    public void setPais(int pais) {
         this.pais = pais;
     }
-    public void setAnoFinal(int cidade) {
+    public void setCidade(int cidade) {
         this.cidade = cidade;
     }
 
-    public int getAnoFinal() {
+    public int getCidade() {
         return cidade;
     }
 
-    public int getAnoInicial() {
+    public int getPais() {
         return pais;
     }
 
 
     public String toJson() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        System.out.println(mapper.writeValueAsString(this));
         return mapper.writeValueAsString(this);
     }
 

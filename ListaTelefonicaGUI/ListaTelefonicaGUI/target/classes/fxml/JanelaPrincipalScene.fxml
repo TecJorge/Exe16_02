@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -11,18 +17,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.UiSprint.ui.JanelaPrincipalUI">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.UiSprint.ui.JanelaPrincipalUI">
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <center>
-            <TextArea fx:id="txtAreaListaTelefonica" editable="false" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding></TextArea>
-         </center>
          <top>
             <Label BorderPane.alignment="CENTER">
                <font>
@@ -30,6 +27,9 @@
                </font>
             </Label>
          </top>
+         <center>
+            <TextArea fx:id="txtMainWindow" prefHeight="138.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
    </center>
    <top>
@@ -37,24 +37,24 @@
          <menus>
             <Menu text="Criar">
                <items>
-                  <MenuItem onAction="#mnuContactosNovoAction" text="Ano Letivo">
+                  <MenuItem onAction="#mnuNewAnoLetivoAction" text="Ano Letivo">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem onAction="#mnuContactosNovoAction" text="Unidade Curricular">
+                  <MenuItem text="Unidade Curricular">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="U" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem onAction="#mnuContactosNovoAction" text="Edição de Unidade Curricular">
+                  <MenuItem text="Edição de Unidade Curricular">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem onAction="#mnuContactosNovoAction" text="Proposta">
+                  <MenuItem onAction="#mnuNewPropostaAction" text="Proposta">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
@@ -69,7 +69,7 @@
             </Menu>
             <Menu text="Consultar">
                <items>
-                  <MenuItem onAction="#mnuContactosNovoAction" text="Ano Letivo">
+                  <MenuItem onAction="#mnuNewAnoLetivoAction" text="Ano Letivo">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
@@ -80,12 +80,12 @@
                         <KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <MenuItem onAction="#mnuContactosNovoAction" text="Unidade Curricular">
+                  <MenuItem  text="Unidade Curricular">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <MenuItem onAction="#mnuContactosNovoAction" text="Edição de Unidade Curricular">
+                  <MenuItem  text="Edição de Unidade Curricular">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>

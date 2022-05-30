@@ -24,7 +24,7 @@ public class AdicionarNovoAnoLetivoUI implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
-    public void associarParentUI(JanelaPrincipalUI janelaPrincipalUI) {
+    public void relateParentUI(JanelaPrincipalUI janelaPrincipalUI) {
         this.janelaPrincipalUI = janelaPrincipalUI;
     }
 
@@ -35,7 +35,7 @@ public class AdicionarNovoAnoLetivoUI implements Initializable {
             
             boolean adicionou = appController.addAnoLetivo(Integer.valueOf(txtAnoLetivoInicial.getText()), Integer.valueOf(txtAnoLetivoFinal.getText()));
             if (adicionou) {
-                janelaPrincipalUI.atualizaTextAreaListaTelefonica();
+
             }
             
             AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, "Adicionar novo A Letivo.",

@@ -1,25 +1,19 @@
 package org.UiSprint.controller;
 
 import org.UiSprint.Services.AnoLetivoService;
-import org.UiSprint.model.ListaTelefonica;
+import org.UiSprint.Services.PropostaService;
 
 public class AplicacaoController {
-    private ListaTelefonica listaTelefonica;
     private AnoLetivoService anoLetivoService=new AnoLetivoService();
-
-    public AplicacaoController() {
-        listaTelefonica = new ListaTelefonica();
+    private PropostaService propostaService = new PropostaService();
+    private EdicaoUCService edicaoUCService=new EdicaoUCService();
+    public boolean addAnoLetivo(int pais, int cidade) {
+        return anoLetivoService.addAnoLetivo(pais,cidade);
     }
-
-    public String getListaTelefonica() {
-        return listaTelefonica.toString();
+    public boolean addProposta(int userID,int empresaID,String titleProposta,String problema,String objetivo,int edicaoID){
+        return propostaService.addProposta(userID,empresaID,titleProposta,problema,objetivo,edicaoID);
     }
-
-    public void preencherListaTelefonica() {
-        listaTelefonica.prePreencherLista();
-    }
-
-    public boolean addAnoLetivo(int anoInicial, int anoFinal) {
-        return anoLetivoService.addAnoLetivo(anoInicial,anoFinal);
+    public boolean addEdicaoUC(int edicaoID,int anoLetivoID){
+        return edicaoUCService.addEdicaoUC(edicaoID,anoLetivoID);
     }
 }

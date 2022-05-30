@@ -1,6 +1,6 @@
 package org.UiSprint.WebServices;
 
-import org.UiSprint.model.NewLocalInfoDTO;
+import org.UiSprint.model.NewAnoLetivoDTO;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 public class AnoLetivoWS {
-       public boolean addAnoLetivo(NewLocalInfoDTO anoLetivo) {
+       public boolean addAnoLetivo(NewAnoLetivoDTO anoLetivo) {
 
             WebClient webClient = WebClient.builder()
                     .baseUrl("http://localhost:8090")
