@@ -24,6 +24,7 @@ public class JanelaPrincipalUI implements Initializable {
     private Stage novoPropostaStage;
     private Stage novoUnidadeCurricularStage;
     private Stage novoEdicaoStage;
+    private Stage consultarUCStage;
 
     @FXML
     private TextArea txtMainWindow;
@@ -40,7 +41,15 @@ public class JanelaPrincipalUI implements Initializable {
             FXMLLoader loaderEdicaoUC = new FXMLLoader(getClass().getResource("/fxml/AdicionarNovaEdicaoUC.fxml"));
             Parent rootEdicaoUC=loaderEdicaoUC.load();
             Scene sceneEdicaoUC=new Scene(rootEdicaoUC);
-//            StartStages(scene);
+
+
+            FXMLLoader loaderUC = new FXMLLoader(getClass().getResource("/fxml/AdicionarNovaUnidadeCurricular.fxml"));
+            Parent rootUC=loaderUC.load();
+            Scene sceneUC=new Scene(rootUC);
+
+            FXMLLoader loaderConsultarUC = new FXMLLoader(getClass().getResource("/fxml/ConsultarUC.fxml"));
+            Parent rootConsultarUC=loaderConsultarUC.load();
+            Scene sceneConsultarUC=new Scene(rootConsultarUC);
             appController = new AplicacaoController();
             novoPropostaStage = new Stage();
             novoPropostaStage.initModality(Modality.APPLICATION_MODAL);
@@ -57,9 +66,18 @@ public class JanelaPrincipalUI implements Initializable {
             novoEdicaoStage.setTitle("Nova Edição Unidade Curricular");
             novoEdicaoStage.setResizable(false);
            novoEdicaoStage.setScene(sceneEdicaoUC);
-            AdicionarNovoAnoLetivoUI novoContactoUI = loaderAnoLetivo.getController();
+            novoUnidadeCurricularStage = new Stage();
+            novoUnidadeCurricularStage.initModality(Modality.APPLICATION_MODAL);
+            novoUnidadeCurricularStage.setTitle("Nova  Unidade Curricular");
+            novoUnidadeCurricularStage.setResizable(false);
+            consultarUCStage = new Stage();
+            consultarUCStage.initModality(Modality.APPLICATION_MODAL);
+            consultarUCStage.setTitle("Consultar Unidade Curricular");
+            consultarUCStage.setResizable(false);
+            consultarUCStage.setScene(sceneConsultarUC);
+            AdicionarNovoAnoLetivoUI novoAnoUI = loaderAnoLetivo.getController();
+            novoAnoUI.relateParentUI(this);
 
-            novoContactoUI.relateParentUI(this);
         } catch (IOException ex) {
             AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, "Erro.", ex.getMessage());
         }
@@ -75,11 +93,19 @@ public class JanelaPrincipalUI implements Initializable {
     }
     @FXML
     private void mnuNewPropostaAction(ActionEvent event) throws IOException {
-        novoEdicaoStage.show();
+        novoPropostaStage.show();
     }
     @FXML
     private void mnuNewEdicaoUCAction(ActionEvent event) throws IOException {
-        novoPropostaStage.show();
+        novoEdicaoStage.show();
+    }
+    @FXML
+    private void mnuNewUCAction(ActionEvent actionEvent) {
+        novoUnidadeCurricularStage.show();
+    }
+    @FXML
+    private void mnuConsultarUCAction(ActionEvent actionEvent){
+        consultarUCStage.show();
     }
 
     @FXML
@@ -93,26 +119,6 @@ public class JanelaPrincipalUI implements Initializable {
         AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, "Acerca.",
                 "@Copyright\nUPskill 2022").show();
     }
-    private void StartStages(Scene scene){
-        novoAnoLetivoStage = new Stage();
-        novoAnoLetivoStage.initModality(Modality.APPLICATION_MODAL);
-        novoAnoLetivoStage.setTitle("Novo Ano Letivo");
-        novoAnoLetivoStage.setResizable(false);
-        novoAnoLetivoStage.setScene(scene);
-        novoEdicaoStage = new Stage();
-        novoEdicaoStage.initModality(Modality.APPLICATION_MODAL);
-        novoEdicaoStage.setTitle("Nova Edição");
-        novoEdicaoStage.setResizable(false);
-        novoEdicaoStage.setScene(scene);
-        novoPropostaStage = new Stage();
-        novoPropostaStage.initModality(Modality.APPLICATION_MODAL);
-        novoPropostaStage.setTitle("Nova Proposta");
-        novoPropostaStage.setResizable(false);
-        novoPropostaStage.setScene(scene);
-        novoUnidadeCurricularStage = new Stage();
-        novoUnidadeCurricularStage.initModality(Modality.APPLICATION_MODAL);
-        novoUnidadeCurricularStage.setTitle("Nova Unidade Curricular");
-        novoUnidadeCurricularStage.setResizable(false);
-        novoUnidadeCurricularStage.setScene(scene);
-    }
+
+
 }

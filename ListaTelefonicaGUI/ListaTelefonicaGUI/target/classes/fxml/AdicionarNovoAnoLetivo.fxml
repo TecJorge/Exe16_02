@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.UiSprint.ui.AdicionarNovoAnoLetivoUI">
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="org.UiSprint.ui.AdicionarNovoAnoLetivoUI">
    <bottom>
       <FlowPane alignment="CENTER_RIGHT" hgap="5.0" prefWrapLength="350.0" BorderPane.alignment="CENTER">
          <children>

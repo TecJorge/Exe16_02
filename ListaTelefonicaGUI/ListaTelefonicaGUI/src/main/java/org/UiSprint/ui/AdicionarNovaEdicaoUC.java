@@ -43,10 +43,10 @@ public class AdicionarNovaEdicaoUC implements  Initializable{
                         adicionou ? "Ano Letivo adicionado com sucesso."
                                 : "Não foi adicionar o Ano Letivo ao sistema").show();
 
-                encerrarNovoAnoLetivoUI(event);
+                encerrarNovaEdicaoUC(event);
             } catch (NumberFormatException nfe) {
                 AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, "Erro nos dados.",
-                        "Introduza um valor numérico para telefone!").show();
+                        "Introduza um valor numérico !").show();
             } catch (IllegalArgumentException iae) {
                 AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, "Erro nos dados.",
                         iae.getMessage()).show();
@@ -55,10 +55,10 @@ public class AdicionarNovaEdicaoUC implements  Initializable{
 
         @FXML
         private void btnCancelarEdicaoUCAction(ActionEvent event) {
-            encerrarNovoAnoLetivoUI(event);
+            encerrarNovaEdicaoUC(event);
         }
 
-        private void encerrarNovoAnoLetivoUI(ActionEvent event) {
+        private void encerrarNovaEdicaoUC(ActionEvent event) {
             ((Node) event.getSource()).getScene().getWindow().hide();
         }
 }

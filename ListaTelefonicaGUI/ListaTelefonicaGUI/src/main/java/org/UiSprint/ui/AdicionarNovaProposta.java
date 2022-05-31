@@ -51,7 +51,7 @@ import java.util.ResourceBundle;
                 encerrarNovaPropostaUI(event);
             } catch (NumberFormatException nfe) {
                 AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, "Erro nos dados.",
-                        "Introduza um valor numérico para telefone!").show();
+                        "Introduza um valor numérico!").show();
             } catch (IllegalArgumentException iae) {
                 AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, "Erro nos dados.",
                         iae.getMessage()).show();

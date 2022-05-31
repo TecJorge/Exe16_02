@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.UiSprint.ui.ConsultarUCUI">
+   <left>
+      <BorderPane prefHeight="400.0" prefWidth="233.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <bottom>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <BorderPane prefHeight="283.0" prefWidth="233.0" BorderPane.alignment="CENTER">
+               <bottom>
+                  <ButtonBar buttonMinWidth="80.0" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER_LEFT">
+                    <buttons>
+                      <Button fx:id="btnConsultar" alignment="CENTER" mnemonicParsing="false" onAction="#btnConsultarUCAction" text="Consultar" />
+                        <Button fx:id="btnConsultarVoltar" mnemonicParsing="false" onAction="#btnVoltarAction" scaleShape="false" text="Voltar" />
+                    </buttons>
+                     <BorderPane.margin>
+                        <Insets bottom="80.0" left="20.0" right="40.0" />
+                     </BorderPane.margin>
+                  </ButtonBar>
+               </bottom>
+               <center>
+                  <ComboBox fx:id="listUC" prefWidth="150.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </center>
+      </BorderPane>
+   </left>
+   <right>
+      <TextArea fx:id="txtlistarUC" prefHeight="234.0" prefWidth="347.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="30.0" top="40.0" />
+         </BorderPane.margin>
+      </TextArea>
+   </right>
+</BorderPane>

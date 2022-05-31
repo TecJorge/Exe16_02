@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -10,12 +14,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.UiSprint.ui.AdicionarNovoAnoLetivoUI">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.UiSprint.ui.AdicionarNovaEdicaoUC">
    <bottom>
       <FlowPane alignment="CENTER_RIGHT" hgap="5.0" prefWrapLength="350.0" BorderPane.alignment="CENTER">
          <children>
-            <Button defaultButton="true" mnemonicParsing="false" onAction="#btnAdicionarAction" text="Adicionar" />
-            <Button mnemonicParsing="false" onAction="#btnCancelarAction" text="Cancelar" />
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#btnAdicionarEdicaoUCAction" text="Adicionar" />
+            <Button mnemonicParsing="false" onAction="#btnCancelarEdicaoUCAction" text="Cancelar" />
          </children>
          <padding>
             <Insets bottom="5.0" top="5.0" />
@@ -33,10 +37,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Inicio Ano Letivo" GridPane.halignment="RIGHT" />
-            <Label text="Fim Ano Letivo" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-            <TextField fx:id="txtAnoLetivoInicial" maxWidth="250.0" GridPane.columnIndex="1" />
-            <TextField fx:id="txtAnoLetivoFinal" maxWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Unidade Curricular" GridPane.halignment="RIGHT" />
+            <Label text="Ano Letivo" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+            <ComboBox fx:id="listUC" prefWidth="150.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="listAnoLetivo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>

@@ -38,14 +38,14 @@ public class AdicionarNovoAnoLetivoUI implements Initializable {
 
             }
             
-            AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, "Adicionar novo A Letivo.",
+            AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, "Adicionar novo Ano Letivo.",
                     adicionou ? "Ano Letivo adicionado com sucesso."
                     : "Não foi adicionar o Ano Letivo ao sistema").show();
 
             encerrarNovoAnoLetivoUI(event);
         } catch (NumberFormatException nfe) {
             AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, "Erro nos dados.",
-                    "Introduza um valor numérico para telefone!").show();
+                    "Apenas são aceites valores numéricos!").show();
         } catch (IllegalArgumentException iae) {
             AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, "Erro nos dados.",
                     iae.getMessage()).show();
